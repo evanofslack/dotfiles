@@ -1,0 +1,17 @@
+alias cl="clear"
+alias cls="clear"
+
+alias la="la -a"
+
+alias gs="git status"
+alias gc="git commit -m"
+alias ga="git add"
+alias gp="git pull --rebase"
+
+alias vs="code ."
+
+alias dc="docker compose"
+
+alias ..="cd .."
+alias ...="cd ../.."
+

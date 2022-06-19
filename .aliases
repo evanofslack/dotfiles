@@ -1,7 +1,7 @@
 alias cl="clear"
 alias cls="clear"
 
-alias la="la -a"
+alias la="ls -a"
 
 alias gs="git status"
 alias gc="git commit -m"

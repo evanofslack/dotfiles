@@ -1,0 +1,53 @@
+# builtins
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias c="clear"
+alias cl="clear"
+
+alias l="exa --sort Name"
+alias ls="exa --sort Name"
+alias la="exa --sort Name --all"
+alias ll="exa --sort Name --long --all"
+
+# git
+alias lg="lazygit"
+alias g="git"
+alias gs="git status"
+alias gc="git commit -m"
+alias ga="git add"
+alias gpl="git pull --rebase"
+alias gps="git push"
+alias gco="git checkout"
+
+# edit
+alias tm="tmux"
+alias vi="nvim"
+alias vim="nvim"
+alias vs="code ."
+alias csv="csvlens"
+
+# dev
+alias do="docker"
+alias dc="docker compose"
+alias k="kubectl"
+alias tf="terraform"
+alias tfs="task flux:sync"
+alias vpn="sudo route add -net 10.0.0.0/8,  -interface ppp0"
+alias python="python3"
+alias py="python3"
+alias pip="pip3"
+
+# dotfiles
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" 
+alias editz="nvim ~/.zshrc"
+alias edita="nvim ~/.aliases"
+alias editv="nvim ~/.config/nvim/init.vim"
+alias editt="nvim ~/.tmux.conf"
+alias editc="cd ~/.config"
+
+
+
+

@@ -12,6 +12,8 @@ alias ls="exa --sort Name"
 alias ll="exa --sort Name --long"
 alias la="exa --sort Name --long --all"
 
+alias path='echo -e ${PATH//:/\\n}'
+
 # git
 alias lg="lazygit"
 alias g="git"

@@ -1,0 +1,10 @@
+# make directory and change into it.
+# usage: mkd $foo
+
+function mkd() {
+if [[ ! "$1" ]] ; then
+     echo "you must supply a directory name."
+     return 0
+ fi
+  mkdir -p "$1" && cd "$1";
+}

@@ -1,6 +1,0 @@
-# make directory and change into it.
-# usage: mcd $foo
-
-function mcd() {
-  mkdir -p "$1" && cd "$1";
-}

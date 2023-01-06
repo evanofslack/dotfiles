@@ -63,7 +63,7 @@
 
 [help]
 	# automatically correct and execute mistyped commands
-	autocorrect = 1
+	autocorrect = 15 # 1.5 seconds before auto executing
 
 [url "ssh://git@github.com/"]
 # enforce SSH

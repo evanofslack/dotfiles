@@ -3,7 +3,7 @@
 
 function denter() {
  if [[ ! "$1" ]] ; then
-     echo "You must supply a container ID or name."
+     echo "you must supply a container ID or name."
      return 0
  fi
 

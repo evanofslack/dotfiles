@@ -9,8 +9,8 @@ alias cl="clear"
 
 alias l="exa --sort Name"
 alias ls="exa --sort Name"
-alias la="exa --sort Name --all"
-alias ll="exa --sort Name --long --all"
+alias ll="exa --sort Name --long"
+alias la="exa --sort Name --long --all"
 
 # git
 alias lg="lazygit"

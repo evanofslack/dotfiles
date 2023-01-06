@@ -1,0 +1,8 @@
+*.pyc
+*.sw[nop]
+.DS_Store
+.env
+.git/
+/node_modules/
+/tmp
+/vendor

@@ -1,0 +1,70 @@
+[user]
+	name = evanofslack
+	email = evan.slack@outlook.com
+
+[alias]
+
+    # defaults
+	s = status
+    c = commit -m
+    a = add
+    pl = pull
+    ps = push
+    co = checkout
+
+	# view abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+    # amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD
+
+[apply]
+	# detect whitespace errors when applying a patch
+	whitespace = fix
+
+[credential]
+	helper = store
+
+[color]
+	# use colors in Git commands that are capable of colored output
+	ui = auto
+    diff   = auto
+    status = auto
+    branch = auto
+
+[core]
+    # treat spaces before tabs and all kinds of trailing whitespace as an error
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+	# make `git rebase` safer on OS X
+	trustctime = false
+	editor = vim
+
+    # exclude some junk
+	excludesfile = ~/.gitignore_global
+
+[diff]
+	# detect copies as well as renames
+	renames = copies
+
+[init]
+	defaultBranch = main
+
+[push]
+	default = simple
+
+[pull]
+	rebase = true
+
+[help]
+	# automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[url "ssh://git@github.com/"]
+# enforce SSH
+  insteadOf = https://github.com/

@@ -1,11 +1,11 @@
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
-  source $function
+  source $function;
 done
 
 # load configs
 for file in ~/.zsh/config/*; do
-    source "$file"
+    source "$file";
 done
 
 # include alias 

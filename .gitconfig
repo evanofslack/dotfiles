@@ -11,14 +11,14 @@
     pl = pull
     ps = push
     co = checkout
+	br = branch -v
+	rm = remote -v
 
 	# view abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-    # show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
+    # show verbose output for branches
+	branches = branch -a -v
 
     # amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD

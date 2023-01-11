@@ -43,13 +43,9 @@ alias py="python3"
 alias pip="pip3"
 
 # dotfiles
-alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" 
+alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias editz="nvim ~/.zshrc"
 alias edita="nvim ~/.aliases"
-alias editv="nvim ~/.config/nvim/init.vim"
+alias editv="nvim ~/.config/nvim/lua/core/plugins.lua"
 alias editt="nvim ~/.tmux.conf"
 alias editc="cd ~/.config"
-
-
-
-

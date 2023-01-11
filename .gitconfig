@@ -1,9 +1,23 @@
 [user]
+	email = eslack@wasabi.com
 	name = evanofslack
-	email = evan.slack@outlook.com
+
+[http]
+	postBuffer = 2048M
+	maxRequestBuffer = 1024M
+
+[core]
+	compression = 9
+
+[ssh]
+	postBuffer = 2048M
+	maxRequestBuffer = 1024M
+
+[pack]
+	windowMemory = 256m
+	packSizeLimit = 256m
 
 [alias]
-
     # defaults
 	s = status
     c = commit -m
@@ -68,3 +82,10 @@
 [url "ssh://git@github.com/"]
 # enforce SSH
   insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "ssh://git@github.com:Bluearchive:"]
+	insteadOf = https://github.com/Bluearchive
+[url "git@github.com:Bluearchive:"]
+	insteadOf = https://github.com/Bluearchive
+

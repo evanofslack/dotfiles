@@ -5,4 +5,4 @@ parse_git_branch () {
     fi
 }
 
-PROMPT="%B%F{043}%n%f %F{038}/%2~%f %F{229}$(parse_git_branch) %f%#%b "
+PROMPT="%B%F{043}%n%f %F{038}/%2~%f %F{229} %f%#%b "

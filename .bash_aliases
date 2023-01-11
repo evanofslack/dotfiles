@@ -3,19 +3,13 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-
 alias c="clear"
 alias cl="clear"
-
-alias l="exa --sort Name"
-alias ls="exa --sort Name"
-alias ll="exa --sort Name --long"
-alias la="exa --sort Name --long --all"
-
-alias path='echo -e ${PATH//:/\\n}'
+alias l="ls"
+alias la="ls -a"
+alias ll="ls -la"
 
 # git
-alias lg="lazygit"
 alias g="git"
 alias gs="git status"
 alias gc="git commit -m"
@@ -25,31 +19,22 @@ alias gps="git push"
 alias gco="git checkout"
 
 # edit
-alias tm="tmux"
 alias vi="nvim"
 alias vim="nvim"
-alias vs="code ."
 alias csv="csvlens"
+
 
 # dev
 alias do="docker"
 alias dc="docker compose"
 alias k="kubectl"
 alias tf="terraform"
-alias tfs="task flux:sync"
-alias vpn="sudo route add -net 10.0.0.0/8,  -interface ppp0"
 alias python="python3"
 alias py="python3"
-alias pip="pip3"
+alias pip-"pip3"
 
-# dotfiles
 alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" 
-alias editz="nvim ~/.zshrc"
-alias edita="nvim ~/.aliases"
-alias editv="nvim ~/.config/nvim/init.vim"
-alias editt="nvim ~/.tmux.conf"
+alias editz="nvim ~/.bashrc"
+alias edita="nvim ~/.bash_aliases"
+alias editv="nvim ~/.config/nvim/core/plugins.lua"
 alias editc="cd ~/.config"
-
-
-
-

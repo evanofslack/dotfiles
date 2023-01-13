@@ -64,14 +64,6 @@ set({ "i" }, "<c-p>", [[<esc>"+pi]])
 set("v", "<c-j>", ":m '>+1<CR>gv=gv")
 set("v", "<c-k>", ":m '<-2<CR>gv=gv")
 
--- autocompletion
-
--- lsp code navigation.
-set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })
-set("n", "<leader>k", vim.lsp.buf.hover, { noremap = true, silent = true })
-set("n", "g[", vim.diagnostic.goto_next, { noremap = true, silent = true })
-set("n", "g]", vim.diagnostic.goto_prev, { noremap = true, silent = true })
-
 -- telescope
 local builtin = require("telescope.builtin")
 set("n", "<leader>p", builtin.git_files, { desc = "find git files" })
@@ -90,5 +82,11 @@ set("n", "<leader>sw", builtin.grep_string, { desc = "[s]earch current [w]ord" }
 set("n", "<leader>sd", builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
 
 -- trouble
-set("n", "<leader>d", "<cmd>TroubleToggle<cr>", { silent = true, desc = "show diagnostics" })
-set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, desc = "go to lsp references (trouble)" })
+set("n", "<leader>2", "<cmd>TroubleToggle<cr>", { silent = true, desc = "show diagnostics" })
+-- set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, desc = "go to lsp references (trouble)" })
+
+-- lsp
+set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })
+set("n", "<leader>k", vim.lsp.buf.hover, { noremap = true, silent = true })
+set("n", "[g", vim.diagnostic.goto_next, { noremap = true, silent = true })
+set("n", "]g", vim.diagnostic.goto_prev, { noremap = true, silent = true })

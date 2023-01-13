@@ -75,10 +75,10 @@ local barbecue = require("barbecue")
 barbecue.setup({
 	attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
 	theme = {
-		basename = { bold = false },
+		basename = { bold = true },
 	},
 	modifiers = {
-		dirname = ":s?.*??",
+		-- dirname = ":s?.*??",
 	},
 })
 
@@ -153,7 +153,6 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.golangci_lint,
 		null_ls.builtins.diagnostics.hadolint,
 		null_ls.builtins.diagnostics.markdownlint,
-		null_ls.builtins.diagnostics.tfsec,
 		null_ls.builtins.diagnostics.todo_comments,
 		null_ls.builtins.diagnostics.trail_space,
 		null_ls.builtins.diagnostics.zsh,
@@ -175,6 +174,7 @@ null_ls.setup({
 })
 
 ---------- diagnostics ----------
+
 vim.diagnostic.config({
 	virtual_text = true,
 })

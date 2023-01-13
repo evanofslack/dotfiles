@@ -1,13 +1,21 @@
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+	return
+end
+
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local z_utils = require("telescope._extensions.zoxide.utils")
-require("telescope").setup({
+
+telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
+				["<Down>"] = actions.cycle_history_next,
+				["<Up>"] = actions.cycle_history_prev,
 			},
 		},
 	},

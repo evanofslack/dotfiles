@@ -1,4 +1,9 @@
-require("gruvbox").setup({
+local gruvbox_status_ok, gruvbox = pcall(require, "gruvbox")
+if not gruvbox_status_ok then
+	return
+end
+
+gruvbox.setup({
 	undercurl = true,
 	underline = true,
 	bold = true,

@@ -1,3 +1,8 @@
+local status_ok, lualine = pcall(require, "lualine")
+if not status_ok then
+	return
+end
+
 local custom_gruvbox = require("lualine.themes.gruvbox")
 
 local config = {
@@ -6,6 +11,7 @@ local config = {
 		globalstatus = false,
 		component_separators = { left = "|", right = "|" },
 		section_separators = { left = "", right = "" },
+		disabled_filetypes = { "alpha", "dashboard" },
 	},
 	sections = {
 		lualine_c = {},
@@ -48,4 +54,4 @@ ins_left({
 	separator = { left = "", right = "" },
 })
 
-require("lualine").setup(config)
+lualine.setup(config)

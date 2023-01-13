@@ -6,6 +6,7 @@ end
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local z_utils = require("telescope._extensions.zoxide.utils")
+local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
 	defaults = {
@@ -19,8 +20,23 @@ telescope.setup({
 			},
 		},
 	},
-	pickers = {},
+	pickers = {
+		oldfiles = {
+			sort_lastused = true,
+			cwd_only = false,
+		},
+	},
 	extensions = {
+		live_grep_args = {
+			auto_quoting = true, -- enable/disable auto-quoting
+			mappings = { -- extend mappings
+				i = {
+					["<C-o>"] = lga_actions.quote_prompt(),
+					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+					["<C-u>"] = lga_actions.quote_prompt({ postfix = " .." }),
+				},
+			},
+		},
 		fzf = {
 			fuzzy = true,
 			override_generic_sorter = true,
@@ -34,8 +50,20 @@ telescope.setup({
 				preview_height = 0.8,
 			},
 		},
+		file_browser = {
+			-- theme = "ivy",
+			hijack_netrw = true,
+			mappings = {
+				["i"] = {
+					-- your custom insert mode mappings
+				},
+				["n"] = {
+					-- your custom normal mode mappings
+				},
+			},
+		},
 		zoxide = {
-			prompt_title = "[ Zoxide ]",
+			prompt_title = "[ zoxide ]",
 			list_command = "zoxide query -ls",
 			mappings = {
 				default = {
@@ -63,3 +91,5 @@ require("telescope").load_extension("undo")
 require("telescope").load_extension("neoclip")
 require("telescope").load_extension("zoxide")
 require("telescope").load_extension("notify")
+require("telescope").load_extension("live_grep_args")
+require("telescope").load_extension("file_browser")

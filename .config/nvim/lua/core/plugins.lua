@@ -38,7 +38,8 @@ return packer.startup(function(use)
 
 	-------------------- ui --------------------
 
-	use({ "ellisonleao/gruvbox.nvim" }) -- theme (gruvbox)
+	-- themes
+	use({ "ellisonleao/gruvbox.nvim" }) -- the best colorscheme
 	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } }) -- statusline
 	use({ "goolord/alpha-nvim", requires = { "nvim-tree/nvim-web-devicons" } }) -- start page
 	use({ "sitiom/nvim-numbertoggle" }) -- switch between relative and absolute line numbers
@@ -48,6 +49,7 @@ return packer.startup(function(use)
 	use({ "lukas-reineke/indent-blankline.nvim" }) -- visual identation guide
 	use({ "j-hui/fidget.nvim" }) -- lsp loading progress
 	use({ "yamatsum/nvim-cursorline" }) -- hightlight word under cursor
+	use({ "smjonas/inc-rename.nvim" }) -- visual renaming
 
 	-------------------- core --------------------
 
@@ -58,6 +60,8 @@ return packer.startup(function(use)
 	use({ "jvgrootveld/telescope-zoxide" })
 	use({ "AckslD/nvim-neoclip.lua" })
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
+	use({ "nvim-telescope/telescope-live-grep-args.nvim" })
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -67,7 +71,7 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig" })
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "jose-elias-alvarez/null-ls.nvim" }) -- formatting / linting
+	use({ "jose-elias-alvarez/null-ls.nvim" }) -- formatting / linting / diagnostics
 	use({ "SmiteshP/nvim-navic" }) -- winbar context
 	use({ "utilyre/barbecue.nvim" }) -- winbar context
 
@@ -76,9 +80,11 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
 	use({ "hrsh7th/cmp-path" }) -- path completions
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
-	use({ "hrsh7th/cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-nvim-lua" })
-	-- use({ "hrsh7th/cmp-nvim-lsp-signature-help" }) -- function parameters
+	use({ "hrsh7th/cmp-nvim-lsp-signature-help" }) -- function parameters
+	use({ "hrsh7th/cmp-nvim-lsp" }) -- lsp completions
+	use({ "hrsh7th/cmp-nvim-lua" }) -- lua completions
+	use({ "dmitmel/cmp-cmdline-history" }) -- cmdline history completions
+	use({ "hrsh7th/cmp-cmdline" }) -- cmdline buffer completions
 	-- use({ "folke/neodev.nvim" }) -- vim api completions
 
 	-- snippets

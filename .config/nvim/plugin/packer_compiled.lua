@@ -104,10 +104,25 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-cmdline-history"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp-cmdline-history",
+    url = "https://github.com/dmitmel/cmp-cmdline-history"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
   },
   ["cmp-nvim-lua"] = {
     loaded = true,
@@ -148,6 +163,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
+  },
+  ["inc-rename.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/inc-rename.nvim",
+    url = "https://github.com/smjonas/inc-rename.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
@@ -280,10 +300,20 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
+  ["telescope-live-grep-args.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
+    url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
   },
   ["telescope-undo.nvim"] = {
     loaded = true,

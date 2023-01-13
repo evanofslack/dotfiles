@@ -120,6 +120,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
@@ -135,5 +136,23 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = false,
+	},
+})
+
+-- general cmdline history autocomplete
+for _, cmd_type in ipairs({ ":", "?", "@" }) do
+	cmp.setup.cmdline(cmd_type, {
+		sources = {
+			{ name = "cmdline_history" },
+		},
+	})
+end
+
+-- search cmdline buffer and history autocomplete
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+		{ name = "cmdline_history" },
 	},
 })

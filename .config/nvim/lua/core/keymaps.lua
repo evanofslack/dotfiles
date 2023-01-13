@@ -66,23 +66,44 @@ set("v", "<c-k>", ":m '<-2<CR>gv=gv")
 
 -- telescope
 local builtin = require("telescope.builtin")
-set("n", "<leader>p", builtin.git_files, { desc = "find git files" })
-set("n", "<leader>f", builtin.find_files, { desc = "find files" })
-set("n", "<leader>r", builtin.oldfiles, { desc = "find recently opened files" })
-set("n", "<leader>b", builtin.buffers, { desc = "find existing buffers" })
-set("n", "<leader>g", builtin.live_grep, { desc = "search with grep" })
-set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "search undo history" })
-set("n", "<leader>y", "<cmd>Telescope neoclip<cr>", { desc = "search clipboard history" })
-set("n", "<leader>z", "<cmd>Telescope zoxide list<cr>", { desc = "navigate with zoxide" })
-set("n", "<leader>1", "<cmd>Telescope notify <cr>", { desc = "search notifications" })
+local ext = require("telescope").extensions
+set("n", "<leader>ff", builtin.git_files, { desc = "find git files" })
+set("n", "<leader>fp", builtin.find_files, { desc = "find files" })
+set("n", "<leader>fr", builtin.oldfiles, { desc = "find recently opened files" })
+set("n", "<leader>f;", builtin.buffers, { desc = "find existing buffers" })
+
+-- live grep
+-- if in git project, change work dir to top level
+-- otherwise do a normal grep
+set("n", "<leader>fg", function()
+	local git_dir = vim.fn.system(string.format("git -C %s rev-parse --show-toplevel", vim.fn.expand("%:p:h")))
+	git_dir = string.gsub(git_dir, "\n", "")
+	local ok, _ = vim.loop.fs_stat(git_dir)
+	if not ok then
+		ext.live_grep_args.live_grep_args()
+	else
+		local opts = { cwd = git_dir }
+		ext.live_grep_args.live_grep_args(opts)
+	end
+end, { desc = "search with grep" })
+
+-- alternative grep implementations
+-- set("n", "<leader>fg", builtin.live_grep, { desc = "search with grep" })
+-- set("n", "<leader>fg", ext.live_grep_args.live_grep_args, { desc = "search with grep" })
+
+set("n", "<leader>fb", ":Telescope file_browser<cr>", { desc = "browse files" })
+set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "search undo history" })
+set("n", "<leader>fy", "<cmd>Telescope neoclip<cr>", { desc = "search clipboard history" })
+set("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "navigate with zoxide" })
+set("n", "<leader>fn", "<cmd>Telescope notify <cr>", { desc = "search notifications" })
 
 set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "[/] fuzzily search in current buffer]" })
-set("n", "<leader>sh", builtin.help_tags, { desc = "[s]earch [h]elp" })
-set("n", "<leader>sw", builtin.grep_string, { desc = "[s]earch current [w]ord" })
-set("n", "<leader>sd", builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
+set("n", "<leader>fh", builtin.help_tags, { desc = "find help" })
+set("n", "<leader>fw", builtin.grep_string, { desc = "find current word" })
+set("n", "<leader>fq", builtin.quickfix, { desc = "find quickfix" })
 
 -- trouble
-set("n", "<leader>2", "<cmd>TroubleToggle<cr>", { silent = true, desc = "show diagnostics" })
+set("n", "<leader>fd", "<cmd>TroubleToggle<cr>", { silent = true, desc = "show diagnostics" })
 -- set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, desc = "go to lsp references (trouble)" })
 
 -- lsp

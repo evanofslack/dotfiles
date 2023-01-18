@@ -50,6 +50,9 @@ return packer.startup(function(use)
 	use({ "j-hui/fidget.nvim" }) -- lsp loading progress
 	use({ "yamatsum/nvim-cursorline" }) -- hightlight word under cursor
 	use({ "smjonas/inc-rename.nvim" }) -- visual renaming
+	use({ "stevearc/dressing.nvim" }) -- window ui
+	use({ "ghillb/cybu.nvim", branch = "main" }) -- buffer cycle indicator
+	use({ "simrat39/symbols-outline.nvim" }) -- tree view for lsp symbols
 
 	-------------------- core --------------------
 
@@ -74,6 +77,8 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- formatting / linting / diagnostics
 	use({ "SmiteshP/nvim-navic" }) -- winbar context
 	use({ "utilyre/barbecue.nvim" }) -- winbar context
+	use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }) -- code action popup menu
+	use({ "kosayoda/nvim-lightbulb" }) -- code action indicator
 
 	-- cmp
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -109,6 +114,18 @@ return packer.startup(function(use)
 	use({ "folke/zen-mode.nvim" }) -- go zen mode
 	use({ "dstein64/vim-startuptime" }) -- startup time
 	use({ "lewis6991/impatient.nvim" }) -- load faster pls
+	use({ "ziontee113/icon-picker.nvim" }) -- pick nerdfont icons
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-neotest/neotest-plenary",
+			"nvim-neotest/neotest-python",
+			"nvim-neotest/neotest-go",
+			"rouge8/neotest-rust",
+			"nvim-neotest/neotest-vim-test",
+		},
+	}) -- run tests
 
 	-------------------- movement --------------------
 

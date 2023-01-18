@@ -52,7 +52,7 @@ opt.sidescroll = 10
 opt.sidescrolloff = 10
 opt.updatetime = 50
 opt.timeout = true
-opt.timeoutlen = 300
+opt.timeoutlen = 500
 
 -- input
 opt.mouse = "nvic"

@@ -36,10 +36,7 @@ null_ls.setup({
 	debug = false,
 	on_attach = on_attach,
 	sources = {
-		formatting.prettier.with({
-			extra_filetypes = { "toml" },
-			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-		}),
+		formatting.prettier,
 		formatting.black,
 		formatting.isort,
 		formatting.gofmt,

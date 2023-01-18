@@ -13,17 +13,20 @@ gruvbox.setup({
 	invert_signs = false,
 	invert_tabline = false,
 	invert_intend_guides = false,
-	inverse = true, -- invert background for search, diffs, statuslines and errors
+	inverse = false, -- invert background for search, diffs, statuslines and errors
 	contrast = "", -- can be "hard", "soft" or empty string
 	palette_overrides = {
 		bright_green = "#bbb226",
 		bright_blue = "#83a59b",
-		bright_cyan = "#7cc08c",
+		-- bright_cyan = "#7cc08c",
 	},
 	overrides = {
-		Search = { fg = "#458588", bg = "#ebdbb2" },
-		IncSearch = { fg = "#076678", bg = "#ebdbb2" },
+		Search = { bg = "#5c5c5c", fg = "#ebdbb2" },
+		IncSearch = { bg = "#fe8019", fg = "#ebdbb2" },
+		-- IncSearch = { bg = "#076678", fg = "#ebdbb2" },
 		CursorLine = { bg = "#302c2b" },
+		-- DiffDelete = { bg = "#282828", fg = "#cc241d" },
+		-- DiffAdd = { bg = "#282828", fg = "#bbb226" },
 	},
 	dim_inactive = false,
 	transparent_mode = false,

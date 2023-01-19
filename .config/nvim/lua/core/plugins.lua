@@ -51,8 +51,8 @@ return packer.startup(function(use)
 	use({ "yamatsum/nvim-cursorline" }) -- hightlight word under cursor
 	use({ "smjonas/inc-rename.nvim" }) -- visual renaming
 	use({ "stevearc/dressing.nvim" }) -- window ui
-	use({ "ghillb/cybu.nvim", branch = "main" }) -- buffer cycle indicator
 	use({ "simrat39/symbols-outline.nvim" }) -- tree view for lsp symbols
+	use({ "noib3/nvim-cokeline" }) -- bufferline
 
 	-------------------- core --------------------
 

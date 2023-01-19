@@ -18,10 +18,8 @@ set("i", "<c-j>", "<down>", default_opts)
 set("i", "<c-k>", "<up>", default_opts)
 
 -- tab navigation
--- set("n", "<Tab>", "<cmd>bn<cr>", default_opts)
--- set("n", "<S-Tab>", "<cmd>bp<cr>", default_opts)
-set("n", "<Tab>", "<plug>(CybuLastusedPrev)", default_opts)
-set("n", "<S-Tab>", "<plug>(CybuLastusedNext)", default_opts)
+set("n", "<Tab>", "<cmd>bp<cr>", default_opts)
+set("n", "<S-Tab>", "<cmd>bn<cr>", default_opts)
 
 -- indent and keep selection
 set("x", "<Tab>", ">gv", default_opts)

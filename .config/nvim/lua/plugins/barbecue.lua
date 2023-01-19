@@ -6,7 +6,7 @@ end
 barbecue.setup({
 	attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
 	theme = {
-		basename = { bold = true },
+		basename = { bold = false },
 	},
 	modifiers = {
 		-- dirname = ":s?.*??",

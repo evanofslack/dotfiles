@@ -139,11 +139,6 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["cybu.nvim"] = {
-    loaded = true,
-    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cybu.nvim",
-    url = "https://github.com/ghillb/cybu.nvim"
-  },
   ["dressing.nvim"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/dressing.nvim",
@@ -273,6 +268,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/opt/nvim-code-action-menu",
     url = "https://github.com/weilbith/nvim-code-action-menu"
+  },
+  ["nvim-cokeline"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-cokeline",
+    url = "https://github.com/noib3/nvim-cokeline"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,

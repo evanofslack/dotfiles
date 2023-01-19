@@ -33,3 +33,6 @@ gruvbox.setup({
 })
 
 vim.cmd("colorscheme gruvbox")
+
+-- for bufferline, set empty space to darker color
+vim.cmd([[highlight! link TabLineFill Comment ]])

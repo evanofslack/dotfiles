@@ -45,14 +45,18 @@ null_ls.setup({
 		formatting.rustfmt,
 		formatting.rustywind,
 		formatting.stylua,
-		formatting.terrafmt,
+		formatting.terraform_fmt,
 		formatting.trim_newlines,
 		formatting.trim_whitespace,
 		formatting.yamlfmt,
 
 		diagnostics.dotenv_linter,
 		diagnostics.eslint,
-		diagnostics.flake8,
+		diagnostics.ruff,
+		-- diagnostics.flake8,
+		-- diagnostics.flake8.with({
+		-- 	args = { "--max-line-length", "150" },
+		-- }),
 		diagnostics.golangci_lint,
 		diagnostics.hadolint,
 		diagnostics.markdownlint,
@@ -61,10 +65,10 @@ null_ls.setup({
 		diagnostics.zsh,
 
 		diagnostics.cspell.with({
-			filetypes = { "markdown" },
+			filetypes = { "markdown", "text" },
 		}),
 		code_actions.cspell.with({
-			filetypes = { "markdown" },
+			filetypes = { "markdown", "text" },
 		}),
 	},
 })

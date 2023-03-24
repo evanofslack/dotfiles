@@ -66,7 +66,7 @@ require("cokeline").setup({
 		},
 		{
 			text = "▏",
-			fg = get_hex("Comment", "fg"),
+			fg = get_hex("Normal", "fg"),
 			truncation = {
 				priority = 1,
 			},

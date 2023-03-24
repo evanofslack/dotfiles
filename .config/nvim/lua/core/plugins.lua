@@ -39,7 +39,7 @@ return packer.startup(function(use)
 	-------------------- ui --------------------
 
 	-- themes
-	use({ "ellisonleao/gruvbox.nvim" }) -- the best colorscheme
+	use({ "evanofslack/gruvbox.nvim" }) -- the best colorscheme
 	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } }) -- statusline
 	use({ "goolord/alpha-nvim", requires = { "nvim-tree/nvim-web-devicons" } }) -- start page
 	use({ "sitiom/nvim-numbertoggle" }) -- switch between relative and absolute line numbers
@@ -65,6 +65,7 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
 	use({ "nvim-telescope/telescope-live-grep-args.nvim" })
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
+	use({ "aaronhallaert/advanced-git-search.nvim" })
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -79,9 +80,10 @@ return packer.startup(function(use)
 	use({ "utilyre/barbecue.nvim" }) -- winbar context
 	use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }) -- code action popup menu
 	use({ "kosayoda/nvim-lightbulb" }) -- code action indicator
+	use({ "dnlhc/glance.nvim" }) -- lsp locations UI
 
 	-- cmp
-	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+	use({ "hrsh7th/nvim-cmp" }) -- the completion plugin
 	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
 	use({ "hrsh7th/cmp-path" }) -- path completions
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
@@ -115,10 +117,14 @@ return packer.startup(function(use)
 	use({ "dstein64/vim-startuptime" }) -- startup time
 	use({ "lewis6991/impatient.nvim" }) -- load faster pls
 	use({ "ziontee113/icon-picker.nvim" }) -- pick nerdfont icons
+	use({ "ziontee113/color-picker.nvim" }) -- color picker
+	use({ "tpope/vim-fugitive" }) -- git
+	use({ "tpope/vim-rhubarb" }) -- github
 	use({
 		"nvim-neotest/neotest",
 		requires = {
 			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-plenary",
 			"nvim-neotest/neotest-python",
 			"nvim-neotest/neotest-go",
@@ -131,6 +137,7 @@ return packer.startup(function(use)
 
 	use({ "alexghergh/nvim-tmux-navigation" }) -- navigate tmux
 	use({ "ggandor/leap.nvim" }) -- quick jumping
+	use({ "cbochs/portal.nvim" }) -- quick jump through lists
 
 	-- automatically set up your configuration after cloning packer.nvim
 	if PACKER_BOOTSTRAP then

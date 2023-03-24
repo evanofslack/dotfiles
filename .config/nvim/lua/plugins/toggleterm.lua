@@ -8,9 +8,22 @@ toggleterm.setup({
 	direction = "float",
 	close_on_exit = true,
 	shell = vim.o.shell,
+	highlights = {
+		Normal = {
+			guibg = "TelescopeNormal",
+		},
+		NormalFloat = {
+			link = "TelescopeNormal",
+		},
+		-- FloatBorder = {
+		-- 	guifg = "<VALUE-HERE>",
+		-- 	guibg = "<VALUE-HERE>",
+		-- },
+	},
+	shade_terminals = false,
 	float_opts = {
 		border = "curved",
-		winblend = 5,
+		winblend = 0,
 	},
 })
 

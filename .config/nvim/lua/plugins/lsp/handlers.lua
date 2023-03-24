@@ -51,20 +51,86 @@ end
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_buf_set_keymap
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	keymap(bufnr, "n", "gk", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	-- keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts) -- redefined by lsp-code-action-menu
-	keymap(bufnr, "n", "[g", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-	keymap(bufnr, "n", "]g", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
-	-- keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts) -- redefined in inc-rename
-	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-	keymap(bufnr, "n", "<leader>lm", "<cmd>Mason<cr>", opts)
+	keymap(
+		bufnr,
+		"n",
+		"gd",
+		"<cmd>lua vim.lsp.buf.definition()<CR>",
+		{ noremap = true, silent = true, desc = "go to definition" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"gD",
+		"<cmd>lua vim.lsp.buf.declaration()<CR>",
+		{ noremap = true, silent = true, desc = "go to declaration" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"gi",
+		"<cmd>lua vim.lsp.buf.implementation()<CR>",
+		{ noremap = true, silent = true, desc = "go to implementation" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"gr",
+		"<cmd>lua vim.lsp.buf.references()<CR>",
+		{ noremap = true, silent = true, desc = "go to references" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"gl",
+		"<cmd>lua vim.diagnostic.open_float()<CR>",
+		{ noremap = true, silent = true, desc = "open diagnostic" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"gk",
+		"<cmd>lua vim.lsp.buf.hover()<CR>",
+		{ noremap = true, silent = true, desc = "see hover definition" }
+	)
+	-- keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true, silent = true, desc = "" }) -- redefined by lsp-code-action-menu
+	keymap(
+		bufnr,
+		"n",
+		"[g",
+		"<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>",
+		{ noremap = true, silent = true, desc = "go to next diagnostic" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"]g",
+		"<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
+		{ noremap = true, silent = true, desc = "go to previous diagnostic" }
+	)
+	-- keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap = true, silent = true, desc = "" }) -- redefined in inc-rename
+	keymap(
+		bufnr,
+		"n",
+		"<leader>ls",
+		"<cmd>lua vim.lsp.buf.signature_help()<CR>",
+		{ noremap = true, silent = true, desc = "see signature help" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"<leader>lq",
+		"<cmd>lua vim.diagnostic.setloclist()<CR>",
+		{ noremap = true, silent = true, desc = "see location list" }
+	)
+	keymap(
+		bufnr,
+		"n",
+		"<leader>li",
+		"<cmd>LspInfo<cr>",
+		{ noremap = true, silent = true, desc = "see attached LSP info" }
+	)
+	keymap(bufnr, "n", "<leader>lm", "<cmd>Mason<cr>", { noremap = true, silent = true, desc = "see Mason info" })
 end
 
 M.on_attach = function(client, bufnr)
@@ -76,7 +142,7 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	lsp_keymaps(bufnr)
+	-- lsp_keymaps(bufnr)
 
 	-- winbar context
 	local status_navic_ok, navic = pcall(require, "nvim-navic")

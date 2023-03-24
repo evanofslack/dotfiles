@@ -15,24 +15,10 @@ gruvbox.setup({
 	invert_intend_guides = false,
 	inverse = false, -- invert background for search, diffs, statuslines and errors
 	contrast = "", -- can be "hard", "soft" or empty string
-	palette_overrides = {
-		bright_green = "#bbb226",
-		bright_blue = "#83a59b",
-		-- bright_cyan = "#7cc08c",
-	},
-	overrides = {
-		Search = { bg = "#5c5c5c", fg = "#ebdbb2" },
-		IncSearch = { bg = "#fe8019", fg = "#ebdbb2" },
-		-- IncSearch = { bg = "#076678", fg = "#ebdbb2" },
-		CursorLine = { bg = "#302c2b" },
-		-- DiffDelete = { bg = "#282828", fg = "#cc241d" },
-		-- DiffAdd = { bg = "#282828", fg = "#bbb226" },
-	},
+	palette_overrides = {},
+	overrides = {},
 	dim_inactive = false,
-	transparent_mode = false,
+	transparent_mode = true,
 })
 
 vim.cmd("colorscheme gruvbox")
-
--- for bufferline, set empty space to darker color
-vim.cmd([[highlight! link TabLineFill Comment ]])

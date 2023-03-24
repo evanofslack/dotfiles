@@ -4,23 +4,23 @@
 
 [alias]
 
-    # defaults
+	# defaults
 	s = status
-    c = commit -m
-    a = add
-    pl = pull
-    ps = push
-    co = checkout
+	c = commit -m
+	a = add
+	pl = pull
+	ps = push
+	co = checkout
 	br = branch -v
 	rm = remote -v
 
 	# view abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-    # show verbose output for branches
+	# show verbose output for branches
 	branches = branch -a -v
 
-    # amend the currently staged files to the latest commit
+	# amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
 [apply]
@@ -33,24 +33,45 @@
 [color]
 	# use colors in Git commands that are capable of colored output
 	ui = auto
-    diff   = auto
-    status = auto
-    branch = auto
+	diff   = auto
+	status = auto
+	branch = auto
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = false
 
 [core]
-    # treat spaces before tabs and all kinds of trailing whitespace as an error
+	# treat spaces before tabs and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 	# make `git rebase` safer on OS X
 	trustctime = false
 	editor = vim
 
-    # exclude some junk
+	# exclude some junk
 	excludesfile = ~/.gitignore_global
+	pager = delta
+
 
 [diff]
 	# detect copies as well as renames
+	colorMoved = default
 	renames = copies
+
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff
+
+[mergetool]
+	keepBackup = false
+	prompt = false
+
+[mergetool "vimdiff"]
+	cmd = "nvim  -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J | wincmd ='"
 
 [init]
 	defaultBranch = main
@@ -59,11 +80,11 @@
 	default = simple
 
 [pull]
-	rebase = true
+	rebase = false
 
 [help]
 	# automatically correct and execute mistyped commands
-	autocorrect = 15 # 1.5 seconds before auto executing
+	autocorrect = 2 # 2 seconds before auto executing
 
 [url "ssh://git@github.com/"]
 # enforce SSH

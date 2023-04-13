@@ -78,9 +78,12 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- formatting / linting / diagnostics
 	use({ "SmiteshP/nvim-navic" }) -- winbar context
 	use({ "utilyre/barbecue.nvim" }) -- winbar context
-	use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }) -- code action popup menu
+	-- use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }) -- code action popup menu
+	use({ "aznhe21/actions-preview.nvim" })
 	use({ "kosayoda/nvim-lightbulb" }) -- code action indicator
 	use({ "dnlhc/glance.nvim" }) -- lsp locations UI
+	use({ "VidocqH/lsp-lens.nvim" }) -- display reference counts
+	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }) -- render lsp errors as virtual text
 
 	-- cmp
 	use({ "hrsh7th/nvim-cmp" }) -- the completion plugin
@@ -92,6 +95,7 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-nvim-lua" }) -- lua completions
 	use({ "dmitmel/cmp-cmdline-history" }) -- cmdline history completions
 	use({ "hrsh7th/cmp-cmdline" }) -- cmdline buffer completions
+	use({ "lukas-reineke/cmp-under-comparator" }) -- deprioritize underline prefixed suggestions
 	-- use({ "folke/neodev.nvim" }) -- vim api completions
 
 	-- snippets
@@ -120,6 +124,11 @@ return packer.startup(function(use)
 	use({ "ziontee113/color-picker.nvim" }) -- color picker
 	use({ "tpope/vim-fugitive" }) -- git
 	use({ "tpope/vim-rhubarb" }) -- github
+	use({ "ThePrimeagen/harpoon" }) -- mark-like navigator
+	use({ "nosduco/remote-sshfs.nvim" }) -- remote filesystem
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- folding
+	use({ "luukvbaal/statuscol.nvim" }) -- status column improvements
+	use({ "mfussenegger/nvim-dap", requires = { "rcarriga/nvim-dap-ui", "nvim-telescope/telescope-dap.nvim" } }) -- run debugger
 	use({
 		"nvim-neotest/neotest",
 		requires = {

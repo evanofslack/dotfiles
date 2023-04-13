@@ -1,11 +1,9 @@
-local M = {}
-
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
 	return
 end
 
-M.capabilities = cmp_nvim_lsp.default_capabilities()
+local M = {}
 
 M.setup = function()
 	local signs = {
@@ -20,7 +18,8 @@ M.setup = function()
 	end
 
 	local config = {
-		virtual_text = true, -- enable virtual text
+		virtual_text = false, -- disable virtual text
+		virtual_lines = true, -- enable virtual lines
 		signs = {
 			active = signs, -- show signs
 		},
@@ -132,6 +131,8 @@ local function lsp_keymaps(bufnr)
 	)
 	keymap(bufnr, "n", "<leader>lm", "<cmd>Mason<cr>", { noremap = true, silent = true, desc = "see Mason info" })
 end
+
+M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then

@@ -139,6 +139,11 @@ cmp.setup({
 	experimental = {
 		ghost_text = false,
 	},
+	sorting = {
+		comparators = {
+			require("cmp-under-comparator").under,
+		},
+	},
 })
 
 -- general cmdline history autocomplete

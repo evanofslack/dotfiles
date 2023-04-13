@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["actions-preview.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/actions-preview.nvim",
+    url = "https://github.com/aznhe21/actions-preview.nvim"
+  },
   ["advanced-git-search.nvim"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/advanced-git-search.nvim",
@@ -139,6 +144,11 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-under-comparator"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp-under-comparator",
+    url = "https://github.com/lukas-reineke/cmp-under-comparator"
+  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -179,6 +189,11 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/evanofslack/gruvbox.nvim"
   },
+  harpoon = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["icon-picker.nvim"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/icon-picker.nvim",
@@ -203,6 +218,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
+  },
+  ["lsp-lens.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/lsp-lens.nvim",
+    url = "https://github.com/VidocqH/lsp-lens.nvim"
+  },
+  ["lsp_lines.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -276,14 +301,6 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-code-action-menu"] = {
-    commands = { "CodeActionMenu" },
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/eslack/.local/share/nvim/site/pack/packer/opt/nvim-code-action-menu",
-    url = "https://github.com/weilbith/nvim-code-action-menu"
-  },
   ["nvim-cokeline"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-cokeline",
@@ -298,6 +315,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-cursorline",
     url = "https://github.com/yamatsum/nvim-cursorline"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
@@ -356,6 +383,11 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
+  ["nvim-ufo"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-ufo",
+    url = "https://github.com/kevinhwang91/nvim-ufo"
+  },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,
@@ -378,10 +410,30 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/portal.nvim",
     url = "https://github.com/cbochs/portal.nvim"
   },
+  ["promise-async"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/promise-async",
+    url = "https://github.com/kevinhwang91/promise-async"
+  },
+  ["remote-sshfs.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/remote-sshfs.nvim",
+    url = "https://github.com/nosduco/remote-sshfs.nvim"
+  },
+  ["statuscol.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/statuscol.nvim",
+    url = "https://github.com/luukvbaal/statuscol.nvim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
+  },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
@@ -463,23 +515,11 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd nvim-treesitter ]]
-vim.cmd [[ packadd nvim-treesitter-textobjects ]]
 vim.cmd [[ packadd gruvbox.nvim ]]
 vim.cmd [[ packadd modicator.nvim ]]
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd nvim-treesitter-textobjects ]]
 time([[Sequenced loading]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'CodeActionMenu', function(cmdargs)
-          require('packer.load')({'nvim-code-action-menu'}, { cmd = 'CodeActionMenu', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-code-action-menu'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('CodeActionMenu ', 'cmdline')
-      end})
-time([[Defining lazy-load commands]], false)
-
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

@@ -50,7 +50,7 @@ nvim_tree.setup({
 	},
 	filters = {
 		dotfiles = false,
-		custom = { "node_modules", ".git", ".cache", "__pycache__" },
+		custom = { "node_modules", ".cache", "__pycache__" },
 	},
 	actions = {
 		open_file = {

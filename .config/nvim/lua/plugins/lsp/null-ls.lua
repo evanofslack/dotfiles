@@ -3,8 +3,28 @@ if not null_ls_status_ok then
 	return
 end
 
+-- local autoformat = vim.b.autoformat
+local autoformat = true
+
+local function toggle_autoformat()
+	if vim.b.autoformat == false then
+		vim.b.autoformat = nil
+		autoformat = true
+	else
+		autoformat = not autoformat
+	end
+	if autoformat then
+		vim.notify("lsp format on save enabled")
+	else
+		vim.notify("lsp format on save disabled")
+	end
+end
+
 -- ensure autosave formatting with null-ls
 local autosave_formatting = function(bufnr)
+	if vim.b.autoformat == false then
+		return
+	end
 	vim.lsp.buf.format({
 		filter = function(client)
 			return client.name == "null-ls"
@@ -22,7 +42,9 @@ local on_attach = function(client, bufnr)
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				autosave_formatting(bufnr)
+				if autoformat then
+					autosave_formatting(bufnr)
+				end
 			end,
 		})
 	end
@@ -57,8 +79,10 @@ null_ls.setup({
 		-- diagnostics.flake8.with({
 		-- 	args = { "--max-line-length", "150" },
 		-- }),
-		diagnostics.golangci_lint,
-		diagnostics.hadolint,
+		diagnostics.golangci_lint.with({
+			args = { "run", "--concurrency=1", "--fix=false", "--out-format=json", "--path-prefix", "$ROOT" },
+		}),
+		-- diagnostics.hadolint,
 		diagnostics.markdownlint,
 		diagnostics.todo_comments,
 		diagnostics.trail_space,
@@ -72,3 +96,7 @@ null_ls.setup({
 		}),
 	},
 })
+
+vim.keymap.set("n", "<Leader>lf", function()
+	toggle_autoformat()
+end, { desc = "toggle lsp  format on save" })

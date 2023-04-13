@@ -15,10 +15,6 @@ toggleterm.setup({
 		NormalFloat = {
 			link = "TelescopeNormal",
 		},
-		-- FloatBorder = {
-		-- 	guifg = "<VALUE-HERE>",
-		-- 	guibg = "<VALUE-HERE>",
-		-- },
 	},
 	shade_terminals = false,
 	float_opts = {

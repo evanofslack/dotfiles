@@ -89,7 +89,7 @@ local mappings = {
 	h = {
 		name = "git",
 	},
-	t = {
+	s = {
 		name = "treesitter",
 	},
 	g = {
@@ -101,14 +101,26 @@ local mappings = {
 	d = {
 		name = "debug",
 	},
-	z = {
+	x = {
 		name = "packer",
 	},
-	n = {
-		name = "neotest",
+	t = {
+		name = "test",
 	},
 	b = {
 		name = "buffer",
+	},
+	a = {
+		name = "harpoon",
+	},
+	r = {
+		name = "remote-sshfs",
+	},
+	z = {
+		name = "folds",
+	},
+	p = {
+		name = "picker",
 	},
 }
 

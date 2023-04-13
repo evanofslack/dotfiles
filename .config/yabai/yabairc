@@ -64,6 +64,9 @@ yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^console$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^MultiViewer for F1$" manage=off
+yabai -m rule --add app="^VLC media player$" manage=off
+yabai -m rule --add app="^VLC$" manage=off
+yabai -m rule --add app="^Python$" manage=off
 
 
 echo "yabai configuration loaded.."

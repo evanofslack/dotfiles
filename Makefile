@@ -1,7 +1,13 @@
-.PHONY: all delete
+.PHONY: setup macos arch delete test
 
-all:
-        stow --verbose --target=$$HOME --restow */
+setup:
+		./setup.sh setup
 
-delete:
-        stow --verbose --target=$$HOME --delete */
+macos:
+		./setup.sh macos
+
+arch:
+		./setup.sh arch
+
+remove:
+		./setup.sh remove

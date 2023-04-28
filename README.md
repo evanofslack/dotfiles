@@ -2,12 +2,21 @@
 
 the wildest collection of code you'll ever see
 
-## local setup
+## setup
+first
 
-### stow
+```bash
+make setup
+```
 
-`stow --verbose --target=$$HOME --restow */`
+then
 
-### bare
+```bash
+make macos
+```
 
-`git clone --bare git@github.com:evanofslack/dotfiles.git $HOME/.dotfiles && source ~/.zshrc`
+or maybe
+
+```bash
+make arch
+```

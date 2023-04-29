@@ -12,8 +12,6 @@ alias ls="exa --sort Name --group-directories-first"
 alias ll="exa --sort Name --long --group-directories-first --header --no-permissions"
 alias la="exa --sort Name --long --all --group-directories-first --header --no-permissions"
 
-alias find="gfind"
-
 alias path='echo -e ${PATH//:/\\n}'
 
 # git

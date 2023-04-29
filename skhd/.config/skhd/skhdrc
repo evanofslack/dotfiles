@@ -73,3 +73,13 @@ cmd + lctrl + alt - r : \
     /usr/bin/env osascript <<< \
         "display notification \"Restarting Yabai\" with title \"Yabai\""; \
     launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+cmd + lctrl + alt - 1 : \
+    /usr/bin/env osascript <<< \
+        "display notification \"starting yabai\" with title \"Yabai\""; \
+        brew services start yabai
+
+cmd + lctrl + alt - 2 : \
+    /usr/bin/env osascript <<< \
+        "display notification \"stopping yabai\" with title \"Yabai\""; \
+        brew services stop yabai

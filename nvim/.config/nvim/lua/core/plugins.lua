@@ -66,6 +66,7 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-live-grep-args.nvim" })
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use({ "aaronhallaert/advanced-git-search.nvim" })
+	use({ "LinArcX/telescope-env.nvim" })
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -128,6 +129,7 @@ return packer.startup(function(use)
 	use({ "nosduco/remote-sshfs.nvim" }) -- remote filesystem
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- folding
 	use({ "luukvbaal/statuscol.nvim" }) -- status column improvements
+	use({ "Bryley/neoai.nvim", requires = "MunifTanjim/nui.nvim" }) -- chatGPT in the editor
 	use({ "mfussenegger/nvim-dap", requires = { "rcarriga/nvim-dap-ui", "nvim-telescope/telescope-dap.nvim" } }) -- run debugger
 	use({
 		"nvim-neotest/neotest",

@@ -83,7 +83,7 @@ set("n", "<leader>ff", function()
 end, { desc = "find git files " })
 set("n", "<leader>fp", builtin.find_files, { desc = "find files" })
 set("n", "<leader>fr", builtin.oldfiles, { desc = "find recently opened files" })
-set("n", "<leader>f;", builtin.buffers, { desc = "find existing buffers" })
+set("n", "<leader>fb", builtin.buffers, { desc = "find buffers" })
 
 -- live grep
 -- if in git project, change work dir to top level, otherwise do a normal grep
@@ -103,7 +103,7 @@ end, { desc = "search with grep" })
 -- set("n", "<leader>fg", builtin.live_grep, { desc = "search with grep" })
 -- set("n", "<leader>fg", ext.live_grep_args.live_grep_args, { desc = "search with grep" })
 
-set("n", "<leader>fb", ":Telescope file_browser<cr>", { desc = "browse files" })
+-- set("n", "<leader>fb", ":Telescope file_browser<cr>", { desc = "browse files" })
 set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "search undo history" })
 set("n", "<leader>fy", "<cmd>Telescope neoclip<cr>", { desc = "search clipboard history" })
 set("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "navigate with zoxide" })
@@ -215,6 +215,42 @@ set("n", "<leader>hl", ext.advanced_git_search.diff_commit_line, { desc = "diff 
 set("n", "<leader>hc", ext.advanced_git_search.search_log_content, { desc = "search all previous commits" })
 set("n", "<leader>hcf", ext.advanced_git_search.search_log_content_file, { desc = "search commits for current file" })
 set("n", "<leader>hr", ext.advanced_git_search.checkout_reflog, { desc = "search reflog" })
+
+-- gitsigns
+local gs = package.loaded.gitsigns
+set("n", "]c", function()
+	if vim.wo.diff then
+		return "]c"
+	end
+	vim.schedule(function()
+		require("gitsigns").next_hunk()
+	end)
+	return "<Ignore>"
+end, { expr = true, desc = "navigate to next git hunk" })
+
+set("n", "[c", function()
+	if vim.wo.diff then
+		return "[c"
+	end
+	vim.schedule(function()
+		require("gitsigns").prev_hunk()
+	end)
+	return "<Ignore>"
+end, { expr = true, desc = "navigate to previous git hunk" })
+
+set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { noremap = true, silent = true, desc = "stage hunk" })
+set({ "n", "v" }, "<leader>hu", ":Gitsigns reset_hunk<CR>", { noremap = true, silent = true, desc = "unstage hunk" })
+set("n", "<leader>hS", ":Gitsigns stage_buffer<CR>", { noremap = true, silent = true, desc = "stage buffer" })
+set("n", "<leader>hU", ":Gitsigns undo_stage_hunk<CR>", { noremap = true, silent = true, desc = "undo stage buffer" })
+set("n", "<leader>hR", ":Gitsigns reset_buffer<CR>", { noremap = true, silent = true, desc = "reset buffer" })
+set("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", { noremap = true, silent = true, desc = "preview buffer" })
+set(
+	"n",
+	"<leader>ht",
+	":Gitsigns toggle_current_line_blame<CR>",
+	{ noremap = true, silent = true, desc = "toggle blame line" }
+)
+set("n", "<leader>hd", ":Gitsigns diffthis<CR>", { noremap = true, silent = true, desc = "diff" })
 
 -- git mergetool
 set("n", "<leader>h1", "<cmd> diffget LOCAL<CR>", { noremap = true, silent = true, desc = "pick local" })

@@ -4,7 +4,7 @@ return {
 			analysis = {
 				useLibraryCodeForTypes = true,
 				diagnosticSeverityOverrides = {
-					reportUnusedVariable = "warning", -- or anything
+					reportUnusedVariable = "warning",
 				},
 				typeCheckingMode = "basic",
 			},

@@ -19,40 +19,40 @@ echo "created $HOME/.config"
 
 
 function macos() {
-    stow --verbose --target=$$HOME --restow alacritty
-    stow --verbose --target=$$HOME --restow atuin
-    stow --verbose --target=$$HOME --restow btop
-    stow --verbose --target=$$HOME --restow gh
-    stow --verbose --target=$$HOME --restow git
-    stow --verbose --target=$$HOME --restow karabiner
-    stow --verbose --target=$$HOME --restow lf
-    stow --verbose --target=$$HOME --restow neofetch
-    stow --verbose --target=$$HOME --restow nvim
-    stow --verbose --target=$$HOME --restow skhd
-    stow --verbose --target=$$HOME --restow starship
-    stow --verbose --target=$$HOME --restow tmux
-    stow --verbose --target=$$HOME --restow vim
-    stow --verbose --target=$$HOME --restow yabai
-    stow --verbose --target=$$HOME --restow zsh
+    stow --verbose --target=$HOME --restow alacritty
+    stow --verbose --target=$HOME --restow atuin
+    stow --verbose --target=$HOME --restow btop
+    stow --verbose --target=$HOME --restow gh
+    stow --verbose --target=$HOME --restow git
+    stow --verbose --target=$HOME --restow karabiner
+    stow --verbose --target=$HOME --restow lf
+    stow --verbose --target=$HOME --restow neofetch
+    stow --verbose --target=$HOME --restow nvim
+    stow --verbose --target=$HOME --restow skhd
+    stow --verbose --target=$HOME --restow starship
+    stow --verbose --target=$HOME --restow tmux
+    stow --verbose --target=$HOME --restow vim
+    stow --verbose --target=$HOME --restow yabai
+    stow --verbose --target=$HOME --restow zsh
 }
 
 function arch() {
-    stow --verbose --target=$$HOME --restow alacritty
-    stow --verbose --target=$$HOME --restow atuin
-    stow --verbose --target=$$HOME --restow btop
-    stow --verbose --target=$$HOME --restow gh
-    stow --verbose --target=$$HOME --restow git
-    stow --verbose --target=$$HOME --restow lf
-    stow --verbose --target=$$HOME --restow neofetch
-    stow --verbose --target=$$HOME --restow nvim
-    stow --verbose --target=$$HOME --restow starship
-    stow --verbose --target=$$HOME --restow tmux
-    stow --verbose --target=$$HOME --restow vim
-    stow --verbose --target=$$HOME --restow zsh
+    stow --verbose --target=$HOME --restow alacritty
+    stow --verbose --target=$HOME --restow atuin
+    stow --verbose --target=$HOME --restow btop
+    stow --verbose --target=$HOME --restow gh
+    stow --verbose --target=$HOME --restow git
+    stow --verbose --target=$HOME --restow lf
+    stow --verbose --target=$HOME --restow neofetch
+    stow --verbose --target=$HOME --restow nvim
+    stow --verbose --target=$HOME --restow starship
+    stow --verbose --target=$HOME --restow tmux
+    stow --verbose --target=$HOME --restow vim
+    stow --verbose --target=$HOME --restow zsh
 }
 
 function remove() {
-    stow --verbose --target=$$HOME --delete */
+    stow --verbose --target=$HOME --delete */
 }
 
 $*

@@ -3,19 +3,15 @@ if not status_ok then
 	return
 end
 
-local neovim = {
-	[[                               __                ]],
-	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-	[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-	[[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-	[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
-}
+local header_color = "GruvboxBlue"
+local button_color = "GruvboxYellow"
+local footer_color = "GruvboxAqua"
+
+local header_padding = 6
+local button_padding = 4
+local footer_padding = 2
 
 local slacknet = {
-	[[                                                                    ]],
-	[[                                                                    ]],
-	[[                                                                    ]],
 	[[       ___                       __                         __      ]],
 	[[      /\_ \                     /\ \                       /\ \__   ]],
 	[[  ____\//\ \       __       ___ \ \ \/'\      ___       __ \ \ ,_\  ]],
@@ -23,54 +19,56 @@ local slacknet = {
 	[[/\__, `\ \_\ \_ /\ \L\.\_ /\ \__/ \ \ \\`\  /\ \/\ \ /\  __/ \ \ \_ ]],
 	[[\/\____/ /\____\\ \__/.\_\\ \____\ \ \_\ \_\\ \_\ \_\\ \____\ \ \__\]],
 	[[ \/___/  \/____/ \/__/\/_/ \/____/  \/_/\/_/ \/_/\/_/ \/____/  \/__/]],
-	[[                                                                    ]],
-	[[                                                                    ]],
 }
 
 local dashboard = require("alpha.themes.dashboard")
 
 dashboard.section.header.val = slacknet
 
+-- override button hl color
+local function button(sc, txt, keybind, keybind_opts)
+	local b = dashboard.button(sc, txt, keybind, keybind_opts)
+	b.opts.hl_shortcut = button_color
+	return b
+end
+
 dashboard.section.buttons.val = {
-	dashboard.button("t", " " .. " new file", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("f", " " .. " find file", ":Telescope find_files <CR>"),
-	dashboard.button("r", " " .. " recent files", ":Telescope oldfiles <CR>"),
-	-- dashboard.button("g", " " .. " find text", ":Telescope live_grep <CR>"),
-	dashboard.button("n", "פּ " .. " nvim-tree", ":NvimTreeToggle<CR>"),
-	dashboard.button(
-		"l",
+	button("a", " " .. " new file", ":ene <BAR> startinsert <CR>"),
+	button("f", " " .. " find file", ":Telescope find_files <CR>"),
+	button("r", " " .. " recent files", ":Telescope oldfiles <CR>"),
+	button("t", " " .. " find text", ":Telescope live_grep <CR>"),
+	button("n", "פּ " .. " file tree", ":NvimTreeToggle<CR>"),
+	-- button("u", "ﮮ " .. " update plugins", ":PackerUpdate <CR>"),
+	button("s", " " .. " sync plugins", ":PackerUpdate <CR>"),
+	button(
+		"g",
 		" " .. " git",
 		":lua require('toggleterm.terminal').Terminal:new({cmd = 'lazygit', direction = 'float'}):toggle()<cr>"
 	),
-	dashboard.button("u", "ﮮ " .. " update plugins", ":PackerUpdate <CR>"),
-	dashboard.button("s", " " .. " sync plugins", ":PackerUpdate <CR>"),
-	dashboard.button("c", " " .. " config", ":e $MYVIMRC <CR>"),
-	dashboard.button("q", " " .. " quit", ":qa<CR>"),
+	button("c", " " .. " config", ":e $MYVIMRC <CR>"),
+	button("q", " " .. " quit", ":qa<CR>"),
 }
 
--- local function footer()
--- 	-- local plugins = #vim.tbl_keys(packer_plugins)
--- 	-- local plugin_info = " " .. plugins
--- 	local datetime = os.date(" %m-%d-%Y   %H:%M")
--- 	local version = vim.version()
--- 	local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
---
--- 	-- return plugin_info .. datetime .. nvim_version_info
--- 	return datetime .. nvim_version_info
--- end
-
 local function footer()
-	local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+	local eslack = "eslack_dotfiles  "
+	local datetime = os.date(" %m-%d-%Y")
 	local version = vim.version()
-	local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+	local nvim_version_info = "  nvim v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-	return datetime .. "   " .. " plugins" .. nvim_version_info
+	return eslack .. datetime .. nvim_version_info
 end
-
 dashboard.section.footer.val = footer()
 
-dashboard.section.footer.opts.hl = "GruvboxYellow"
-dashboard.section.header.opts.hl = "GruvboxBlue"
--- dashboard.section.buttons.opts.hl = "GruvboxGreen"
+dashboard.section.header.opts.hl = header_color
+dashboard.section.footer.opts.hl = footer_color
+
+dashboard.config.layout = {
+	{ type = "padding", val = header_padding },
+	dashboard.section.header,
+	{ type = "padding", val = button_padding },
+	dashboard.section.buttons,
+	{ type = "padding", val = footer_padding },
+	dashboard.section.footer,
+}
 
 alpha.setup(dashboard.opts)

@@ -1,1 +1,3 @@
 secrets.zsh
+tmux/.config/tmux/plugins/
+zsh/.zsh/plugins/

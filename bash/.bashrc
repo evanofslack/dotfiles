@@ -10,7 +10,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export GREP_OPTIONS=' — color=auto'
 
-export PS1="\[\e[1;34m\]\u\[\e[m\]@\[\e[1;36m\]\h\[\e[m\] \[\e[1;33m\]\W\[\e[m\] \[\e[34m\]\\$\[\e[m\] "
+export PS1="\[\e[1;34m\]\u\[\e[m\]@\[\e[1;36m\]\h\[\e[m\] \[\e[1;33m\]\W\[\e[m\] \[\e[37m\]\\$\[\e[m\] "
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

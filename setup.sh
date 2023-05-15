@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function check() {
     if ! hash "$1" > /dev/null 2>&1; then

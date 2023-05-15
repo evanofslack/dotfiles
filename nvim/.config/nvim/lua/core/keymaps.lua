@@ -46,6 +46,11 @@ set("n", "<leader>n", "<cmd>NvimTreeToggle<cr>", { noremap = true, silent = true
 set("n", "<leader>w", ":w<cr>", { silent = false, desc = "quicksave" })
 -- quicksave w/o running autocmds (formatting, reloads, etc)
 set("n", "<c-w>", "<cmd>noautocmd w<cr>", { noremap = true, silent = false })
+-- quicksave and format
+set("n", "<leader><s-w>", function()
+	vim.lsp.buf.format({ async = true })
+	vim.api.nvim_command("write")
+end, { noremap = true, silent = false, desc = "quicksave w/ format" })
 
 -- close buffer without losing window layout
 set("n", "<leader>bd", "<cmd>Bdelete<cr>", { noremap = true, silent = false, desc = "close buffer" })

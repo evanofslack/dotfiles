@@ -4,7 +4,7 @@ if not null_ls_status_ok then
 end
 
 -- local autoformat = vim.b.autoformat
-local autoformat = true
+local autoformat = false
 
 local function toggle_autoformat()
 	if vim.b.autoformat == false then

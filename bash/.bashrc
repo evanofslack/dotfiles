@@ -10,7 +10,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export GREP_OPTIONS=' — color=auto'
 
-export PS1="\[\e[1;34m\]\u\[\e[m\]@\[\e[1;36m\]\h\[\e[m\] \[\e[1;33m\]\W\[\e[m\] \[\e[1;34m\]\\$\[\e[m\] "
+export PS1="\[\e[1;34m\]\u\[\e[m\]@\[\e[1;36m\]\h\[\e[m\] \[\e[1;33m\]\W\[\e[m\] \[\e[34m\]\\$\[\e[m\] "
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -51,6 +51,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# give me my shortcuts
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -60,9 +65,4 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-fi
-
-# give me my shortcuts
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
 fi

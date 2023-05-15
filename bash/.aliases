@@ -22,7 +22,7 @@ alias gpl="git pull"
 alias gps="git push"
 alias gco="git checkout"
 
-alias do="docker"
+alias dk="docker"
 alias dc="docker compose"
 alias dcf="docker compose up --build --force-recreate"
 alias dcl="docker compose logs --follow"

@@ -336,6 +336,11 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
   },
+  ["nvim-dbee"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-dbee",
+    url = "https://github.com/kndndrj/nvim-dbee"
+  },
   ["nvim-lightbulb"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/nvim-lightbulb",

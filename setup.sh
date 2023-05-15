@@ -1,13 +1,11 @@
 #!/bin/sh
 
-
 function check() {
     if ! hash "$1" > /dev/null 2>&1; then
         echo "Command not found: $1. Aborting..."
         exit 1
     fi
 }
-
 
 function setup() {
 check stow
@@ -16,7 +14,6 @@ check curl
 mkdir -p "$HOME/.config"
 echo "created $HOME/.config"
 }
-
 
 function macos() {
     stow --verbose --target=$HOME --restow alacritty
@@ -49,6 +46,12 @@ function arch() {
     stow --verbose --target=$HOME --restow tmux
     stow --verbose --target=$HOME --restow vim
     stow --verbose --target=$HOME --restow zsh
+}
+
+function remote() {
+    stow --verbose --target=$HOME --restow git
+    stow --verbose --target=$HOME --restow vim
+    stow --verbose --target=$HOME --restow bash
 }
 
 function remove() {

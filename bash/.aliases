@@ -1,0 +1,28 @@
+# builtins
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias c="clear"
+alias cl="clear"
+
+alias ls="ls --color=always"
+alias l="ls --color=always"
+alias ll="ls -l"
+alias la="ls -lA"
+
+alias path='echo -e ${PATH//:/\\n}'
+
+alias g="git"
+alias gs="git status"
+alias gc="git commit -m"
+alias ga="git add"
+alias gpl="git pull"
+alias gps="git push"
+alias gco="git checkout"
+
+alias do="docker"
+alias dc="docker compose"
+alias dcf="docker compose up --build --force-recreate"
+alias dcl="docker compose logs --follow"

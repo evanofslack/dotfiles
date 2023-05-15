@@ -91,6 +91,9 @@ set clipboard=unnamedplus
 
 let base16colorspace=256
 
+" the best colorscheme
+autocmd vimenter * ++nested colorscheme gruvbox
+
 " syntax on
 set background=dark
 

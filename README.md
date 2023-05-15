@@ -20,3 +20,9 @@ or maybe
 ```bash
 make arch
 ```
+
+or minimal
+
+```bash
+make remote
+```

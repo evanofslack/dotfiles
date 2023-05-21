@@ -109,6 +109,7 @@ return packer.startup(function(use)
 	use({ "numToStr/Comment.nvim" }) -- comments
 	use({ "famiu/bufdelete.nvim" }) -- delete buffers without changing layout
 	use({ "wakatime/vim-wakatime" }) -- track coding stats
+	use({ "ActivityWatch/aw-watcher-vim" }) -- track activity stats
 	use({ "norcalli/nvim-colorizer.lua" }) -- color highlighter
 	use({ "tpope/vim-sleuth" }) -- detect tabstop and shiftwidth automatically
 	use({ "windwp/nvim-autopairs" }) -- autopair symbols

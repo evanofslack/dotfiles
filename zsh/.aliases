@@ -23,6 +23,7 @@ alias ga="git add"
 alias gpl="git pull"
 alias gps="git push"
 alias gco="git checkout"
+alias gcl="git clone"
 
 # edit
 alias tm="tmux"
@@ -34,9 +35,9 @@ alias csv="csvlens"
 
 # dev
 alias lzd="lazydocker"
-alias do="docker"
+alias dk="docker"
 alias dc="docker compose"
-alias dcf="docker compose up --build --force-recreate"
+alias dcf="docker compose up --build --force-recreate -d"
 alias dcl="docker compose logs --follow"
 
 alias python="python3"
@@ -50,7 +51,7 @@ alias tfd="terraform destroy --auto-approve"
 alias k="kubectl"
 alias tfs="task flux:sync"
 alias vpn="sudo route add -net 10.0.0.0/8,  -interface ppp0"
-
+alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:2.1.1'
 
 # dotfiles
 alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
@@ -59,3 +60,5 @@ alias edita="nvim ~/.aliases"
 alias editv="nvim ~/.config/nvim/lua/core/plugins.lua"
 alias editt="nvim ~/.config/tmux/tmux.conf"
 alias editc="cd ~/.config"
+
+alias sourcez="source ~/.zshrc"

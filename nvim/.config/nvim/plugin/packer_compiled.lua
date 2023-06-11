@@ -199,6 +199,11 @@ _G.packer_plugins = {
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["highlight-undo.nvim"] = {
+    loaded = true,
+    path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/highlight-undo.nvim",
+    url = "https://github.com/tzachar/highlight-undo.nvim"
+  },
   ["icon-picker.nvim"] = {
     loaded = true,
     path = "/Users/eslack/.local/share/nvim/site/pack/packer/start/icon-picker.nvim",

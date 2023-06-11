@@ -12,5 +12,8 @@ eval "$(pyenv init -)"
 # editor
 export EDITOR=nvim
 
+# sops age key
+export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt
+
 # gvm
 [[ -s "/Users/eslack/.gvm/scripts/gvm" ]] && source "/Users/eslack/.gvm/scripts/gvm"

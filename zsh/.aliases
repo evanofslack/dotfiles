@@ -32,6 +32,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias vs="code ."
 alias csv="csvlens"
+alias jo="joshuto"
 
 # dev
 alias lzd="lazydocker"

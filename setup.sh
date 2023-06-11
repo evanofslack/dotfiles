@@ -31,6 +31,7 @@ function macos() {
     stow --verbose --target=$HOME --restow vim
     stow --verbose --target=$HOME --restow yabai
     stow --verbose --target=$HOME --restow zsh
+    stow --verbose --target=$HOME --restow joshuto
 }
 
 function arch() {
@@ -46,6 +47,7 @@ function arch() {
     stow --verbose --target=$HOME --restow tmux
     stow --verbose --target=$HOME --restow vim
     stow --verbose --target=$HOME --restow zsh
+    stow --verbose --target=$HOME --restow joshuto
 }
 
 function remote() {

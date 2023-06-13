@@ -4,8 +4,8 @@
 let mapleader = "\<Space>"
 
 " vertical movement
-nnoremap J <c-d>
-nnoremap K <c-u>
+nnoremap J <c-d>zz
+nnoremap K <c-u>zz
 vnoremap J }
 vnoremap K {
 

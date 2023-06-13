@@ -403,7 +403,6 @@ schemes:
 # *SolarizedDark
 # *TomorrowNight
 
-# colors: *OneDark
 colors: *GruvboxDark
 #######################################
 ##       END OF COLOR SCHEMES        ##

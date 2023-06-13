@@ -38,8 +38,8 @@ dashboard.section.buttons.val = {
 	button("r", " " .. " recent files", ":Telescope oldfiles <CR>"),
 	button("t", " " .. " find text", ":Telescope live_grep <CR>"),
 	button("n", "פּ " .. " file tree", ":NvimTreeToggle<CR>"),
-	-- button("u", "ﮮ " .. " update plugins", ":PackerUpdate <CR>"),
-	button("s", " " .. " sync plugins", ":PackerUpdate <CR>"),
+	button("l", "鈴" .. " lazy", ":Lazy <CR>"),
+
 	button(
 		"g",
 		" " .. " git",
@@ -50,12 +50,15 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-	local eslack = "eslack_dotfiles  "
+	local eslack = "eslack_dotfiles   "
 	local datetime = os.date(" %m-%d-%Y")
 	local version = vim.version()
-	local nvim_version_info = "  nvim v" .. version.major .. "." .. version.minor .. "." .. version.patch
+	local nvim_version_info = "   nvim v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-	return eslack .. datetime .. nvim_version_info
+	 local stats = require("lazy").stats()
+	 local plugins = "    " .. stats.count .. " plugins"
+
+	return datetime .. nvim_version_info .. plugins
 end
 dashboard.section.footer.val = footer()
 

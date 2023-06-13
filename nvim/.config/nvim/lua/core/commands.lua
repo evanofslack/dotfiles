@@ -3,9 +3,6 @@ local autocmd = vim.api.nvim_create_autocmd
 -- source init.lua on save
 autocmd("BufWritePost", { pattern = "vim.env.MYVIMRC", command = "source $MYVIMRC" })
 
--- run packer sync on plugin list change
-autocmd("BufWritePost", { pattern = "plugins.lua", command = "source <afile> | PackerSync" })
-
 -- highlight yanked text
 autocmd("TextYankPost", {
 	callback = function()

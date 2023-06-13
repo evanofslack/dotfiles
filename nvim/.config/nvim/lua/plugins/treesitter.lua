@@ -19,7 +19,6 @@ configs.setup({
 		"gomod",
 		"gowork",
 		"hcl",
-		"help",
 		"html",
 		"javascript",
 		"json",

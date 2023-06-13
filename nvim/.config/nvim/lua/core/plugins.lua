@@ -1,141 +1,126 @@
 local fn = vim.fn
 
--- automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
 		"git",
 		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
 	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
 end
+vim.opt.rtp:prepend(lazypath)
 
--- use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
-end
-
-packer.init({
-	-- have packer use a popup window
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-	git = {
-		clone_timeout = 60, -- timeout, in seconds, for git clones
-	},
-})
-
-return packer.startup(function(use)
-	use({ "wbthomason/packer.nvim" }) -- packer itself
+require("lazy").setup({
 
 	-------------------- ui --------------------
 
 	-- themes
-	use({ "evanofslack/gruvbox.nvim" }) -- the best colorscheme
-	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } }) -- statusline
-	use({ "goolord/alpha-nvim", requires = { "nvim-tree/nvim-web-devicons" } }) -- start page
-	use({ "sitiom/nvim-numbertoggle" }) -- switch between relative and absolute line numbers
-	use({ "melkster/modicator.nvim", after = "gruvbox.nvim" }) -- line number corresponds w/ command mode
-	use({ "kyazdani42/nvim-web-devicons", event = "BufEnter" }) -- icons
-	use({ "lewis6991/gitsigns.nvim" }) -- git icons in gutter
-	use({ "lukas-reineke/indent-blankline.nvim" }) -- visual identation guide
-	use({ "j-hui/fidget.nvim" }) -- lsp loading progress
-	use({ "yamatsum/nvim-cursorline" }) -- hightlight word under cursor
-	use({ "smjonas/inc-rename.nvim" }) -- visual renaming
-	use({ "stevearc/dressing.nvim" }) -- window ui
-	use({ "simrat39/symbols-outline.nvim" }) -- tree view for lsp symbols
-	use({ "noib3/nvim-cokeline" }) -- bufferline
+	"evanofslack/gruvbox.nvim", -- the best colorscheme
+	"sitiom/nvim-numbertoggle", -- switch between relative and absolute line numbers
+	"lewis6991/gitsigns.nvim", -- git icons in gutter
+	"lukas-reineke/indent-blankline.nvim", -- visual identation guide
+	"yamatsum/nvim-cursorline", -- hightlight word under cursor
+	"smjonas/inc-rename.nvim", -- visual renaming
+	"stevearc/dressing.nvim", -- window ui
+	"simrat39/symbols-outline.nvim", -- tree view for lsp symbols
+	"noib3/nvim-cokeline", -- bufferline
+	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- statusline
+	{ "goolord/alpha-nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- start page
+	{ "j-hui/fidget.nvim", version = "legacy" }, -- lsp loading progress
 
 	-------------------- core --------------------
 
 	-- telescope
-	use({ "nvim-lua/plenary.nvim" })
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({ "debugloop/telescope-undo.nvim" })
-	use({ "jvgrootveld/telescope-zoxide" })
-	use({ "AckslD/nvim-neoclip.lua" })
-	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
-	use({ "nvim-telescope/telescope-live-grep-args.nvim" })
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
-	use({ "aaronhallaert/advanced-git-search.nvim" })
-	use({ "LinArcX/telescope-env.nvim" })
+	"nvim-lua/plenary.nvim",
+	"debugloop/telescope-undo.nvim",
+	"jvgrootveld/telescope-zoxide",
+	"AckslD/nvim-neoclip.lua",
+	"nvim-telescope/telescope-live-grep-args.nvim",
+	"nvim-telescope/telescope-file-browser.nvim",
+	"aaronhallaert/advanced-git-search.nvim",
+	"LinArcX/telescope-env.nvim",
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "nvim-telescope/telescope.nvim", version = "0.1.0" },
 
 	-- treesitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
+	},
 
 	-- lsp
-	use({ "neovim/nvim-lspconfig" })
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "jose-elias-alvarez/null-ls.nvim" }) -- formatting / linting / diagnostics
-	use({ "SmiteshP/nvim-navic" }) -- winbar context
-	use({ "utilyre/barbecue.nvim" }) -- winbar context
-	-- use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }) -- code action popup menu
-	use({ "aznhe21/actions-preview.nvim" })
-	use({ "kosayoda/nvim-lightbulb" }) -- code action indicator
-	use({ "dnlhc/glance.nvim" }) -- lsp locations UI
-	use({ "VidocqH/lsp-lens.nvim" }) -- display reference counts
-	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }) -- render lsp errors as virtual text
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"jose-elias-alvarez/null-ls.nvim", -- formatting / linting / diagnostics
+	"SmiteshP/nvim-navic", -- winbar context
+	"utilyre/barbecue.nvim", -- winbar context
+	"kosayoda/nvim-lightbulb", -- code action indicator
+	"aznhe21/actions-preview.nvim", -- show code actions
+	"dnlhc/glance.nvim", -- lsp locations UI
+	"VidocqH/lsp-lens.nvim", -- display reference counts
+	"https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- render lsp errors as virtual text
 
 	-- cmp
-	use({ "hrsh7th/nvim-cmp" }) -- the completion plugin
-	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-	use({ "hrsh7th/cmp-path" }) -- path completions
-	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
-	use({ "hrsh7th/cmp-nvim-lsp-signature-help" }) -- function parameters
-	use({ "hrsh7th/cmp-nvim-lsp" }) -- lsp completions
-	use({ "hrsh7th/cmp-nvim-lua" }) -- lua completions
-	use({ "dmitmel/cmp-cmdline-history" }) -- cmdline history completions
-	use({ "hrsh7th/cmp-cmdline" }) -- cmdline buffer completions
-	use({ "lukas-reineke/cmp-under-comparator" }) -- deprioritize underline prefixed suggestions
-	-- use({ "folke/neodev.nvim" }) -- vim api completions
+	"hrsh7th/nvim-cmp", -- the completion plugin
+	"hrsh7th/cmp-buffer", -- buffer completions
+	"hrsh7th/cmp-path", -- path completions
+	"saadparwaiz1/cmp_luasnip", -- snippet completions
+	"hrsh7th/cmp-nvim-lsp-signature-help", -- function parameters
+	"hrsh7th/cmp-nvim-lsp", -- lsp completions
+	"hrsh7th/cmp-nvim-lua", -- lua completions
+	"dmitmel/cmp-cmdline-history", -- cmdline history completions
+	"hrsh7th/cmp-cmdline", -- cmdline buffer completions
+	"lukas-reineke/cmp-under-comparator", -- deprioritize underline prefixed suggestions
 
 	-- snippets
-	use({ "L3MON4D3/LuaSnip" })
-	use({ "rafamadriz/friendly-snippets" })
+	"L3MON4D3/LuaSnip",
+	"rafamadriz/friendly-snippets",
 
 	-------------------- utility --------------------
 
-	use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } }) -- file explorer
-	use({ "numToStr/Comment.nvim" }) -- comments
-	use({ "famiu/bufdelete.nvim" }) -- delete buffers without changing layout
-	use({ "wakatime/vim-wakatime" }) -- track coding stats
-	use({ "ActivityWatch/aw-watcher-vim" }) -- track activity stats
-	use({ "norcalli/nvim-colorizer.lua" }) -- color highlighter
-	use({ "tpope/vim-sleuth" }) -- detect tabstop and shiftwidth automatically
-	use({ "windwp/nvim-autopairs" }) -- autopair symbols
-	use({ "kylechui/nvim-surround", tag = "*" }) -- change matching tags
-	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }) -- diagnostics
-	use({ "akinsho/toggleterm.nvim", tag = "*" }) -- hover terminal
-	use({ "karb94/neoscroll.nvim" }) -- smooth scroll
-	use({ "rcarriga/nvim-notify" }) -- notifications
-	use({ "folke/which-key.nvim" }) --keymappings
-	use({ "folke/zen-mode.nvim" }) -- go zen mode
-	use({ "dstein64/vim-startuptime" }) -- startup time
-	use({ "lewis6991/impatient.nvim" }) -- load faster pls
-	use({ "ziontee113/icon-picker.nvim" }) -- pick nerdfont icons
-	use({ "ziontee113/color-picker.nvim" }) -- color picker
-	use({ "tpope/vim-fugitive" }) -- git
-	use({ "tpope/vim-rhubarb" }) -- github
-	use({ "ThePrimeagen/harpoon" }) -- mark-like navigator
-	use({ "nosduco/remote-sshfs.nvim" }) -- remote filesystem
-	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- folding
-	use({ "luukvbaal/statuscol.nvim" }) -- status column improvements
-	use({ "tzachar/highlight-undo.nvim" }) -- highlight undos
-	use({ "Bryley/neoai.nvim", requires = "MunifTanjim/nui.nvim" }) -- chatGPT in the editor
-	use({ "mfussenegger/nvim-dap", requires = { "rcarriga/nvim-dap-ui", "nvim-telescope/telescope-dap.nvim" } }) -- run debugger
-	use({
+	"numToStr/Comment.nvim", -- comment lines
+	"famiu/bufdelete.nvim", -- delete buffers without changing layout
+	"wakatime/vim-wakatime", -- track coding stats
+	"ActivityWatch/aw-watcher-vim", -- track activity stats
+	"norcalli/nvim-colorizer.lua", -- color highlighter
+	"tpope/vim-sleuth", -- detect tabstop and shiftwidth automatically
+	"windwp/nvim-autopairs", -- autopair symbols
+	"karb94/neoscroll.nvim", -- smooth scroll
+	"rcarriga/nvim-notify", -- notifications
+	"folke/which-key.nvim", --keymappings
+	"folke/zen-mode.nvim", -- go zen mode
+	"ziontee113/icon-picker.nvim", -- pick nerdfont icons
+	"ziontee113/color-picker.nvim", -- color picker
+	"tpope/vim-fugitive", -- git
+	"tpope/vim-rhubarb", -- github
+	"ThePrimeagen/harpoon", -- mark-like navigator
+	"nosduco/remote-sshfs.nvim", -- remote filesystem
+	"luukvbaal/statuscol.nvim", -- status column improvements
+	"tzachar/highlight-undo.nvim", -- highlight undos
+	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" }, -- folding
+	{ "kylechui/nvim-surround", version = "*" }, -- change matching tags
+	{ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons" }, -- diagnostics
+	{ "akinsho/toggleterm.nvim", version = "*", config = true }, -- hover terminal
+	{ "Bryley/neoai.nvim", dependencies = "MunifTanjim/nui.nvim" }, -- chatGPT in the editor
+	{ "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- file explorer
+	{
+		"kndndrj/nvim-dbee",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		  build = function()
+			require("dbee").install("go")
+		  end,
+	}, -- db client
+	{ "mfussenegger/nvim-dap", dependencies = { "rcarriga/nvim-dap-ui", "nvim-telescope/telescope-dap.nvim" } }, -- run debugger
+	{
 		"nvim-neotest/neotest",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-plenary",
@@ -144,16 +129,11 @@ return packer.startup(function(use)
 			"rouge8/neotest-rust",
 			"nvim-neotest/neotest-vim-test",
 		},
-	}) -- run tests
+	}, -- run tests
 
 	-------------------- movement --------------------
 
-	use({ "alexghergh/nvim-tmux-navigation" }) -- navigate tmux
-	use({ "ggandor/leap.nvim" }) -- quick jumping
-	use({ "cbochs/portal.nvim" }) -- quick jump through lists
-
-	-- automatically set up your configuration after cloning packer.nvim
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
-end)
+	"alexghergh/nvim-tmux-navigation", -- navigate tmux
+	"ggandor/leap.nvim", -- quick jumping
+	"cbochs/portal.nvim", -- quick jump through lists
+})

@@ -2,8 +2,6 @@ local set = vim.keymap.set
 local default_opts = { noremap = true, silent = true }
 
 -- vertical movement
-set("n", "J", "<c-d>zz")
-set("n", "K", "<c-u>zz")
 set("v", "J", "}")
 set("v", "K", "{")
 
@@ -45,14 +43,14 @@ set("n", "<leader>n", "<cmd>NvimTreeToggle<cr>", { noremap = true, silent = true
 -- quicksave
 set("n", "<leader>w", ":w<cr>", { silent = false, desc = "quicksave" })
 -- quicksave w/o running autocmds (formatting, reloads, etc)
-set("n", "<c-w>", "<cmd>noautocmd w<cr>", { noremap = true, silent = false })
+set("n", "<c-w>", "<cmd>noautocmd w<cr>", { noremap = true, silent = false, desc = "quicksave no autocommand"})
 -- quicksave and format
 set("n", "<leader><s-w>", function()
 	vim.lsp.buf.format({ async = true })
 	vim.api.nvim_command("write")
 end, { noremap = true, silent = false, desc = "quicksave w/ format" })
 
--- close buffer without losing window layout
+-- close buffer without closing window layout
 set("n", "<leader>bd", "<cmd>Bdelete<cr>", { noremap = true, silent = false, desc = "close buffer" })
 
 -- copy/paste from system clipboard
@@ -65,10 +63,10 @@ set("v", "<c-j>", ":m '>+1<CR>gv=gv")
 set("v", "<c-k>", ":m '<-2<CR>gv=gv")
 
 -- resizing panes
-set({ "n", "v", "i" }, "<Left>", ":vertical resize +1<CR>", default_opts)
-set({ "n", "v", "i" }, "<Right>", ":vertical resize -1<CR>", default_opts)
-set({ "n", "v", "i" }, "<Up>", ":resize -1<CR>", default_opts)
-set({ "n", "v", "i" }, "<Down>", ":resize +1<CR>", default_opts)
+set({ "n", "v" }, "<Left>", ":vertical resize +1<CR>", default_opts)
+set({ "n", "v" }, "<Right>", ":vertical resize -1<CR>", default_opts)
+set({ "n", "v" }, "<Up>", ":resize -1<CR>", default_opts)
+set({ "n", "v"  }, "<Down>", ":resize +1<CR>", default_opts)
 
 -- telescope
 local builtin = require("telescope.builtin")
@@ -126,14 +124,14 @@ set(
 	"<cmd>lua vim.lsp.buf.definition()<CR>",
 	{ noremap = true, silent = true, desc = "go to definition" }
 )
--- handles by glances
+-- handled by glances
 -- set(
 -- 	"n",
 -- 	"<leader>gi",
 -- 	"<cmd>lua vim.lsp.buf.implementation()<CR>",
 -- 	{ noremap = true, silent = true, desc = "go to implementation" }
 -- )
--- handles by glances
+-- handled by glances
 -- set(
 -- 	"n",
 -- 	"<leader>gr",
@@ -171,6 +169,7 @@ set(
 
 -- set(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true, silent = true, desc = "" })
 -- set("n", "<leader>la", "<cmd>CodeActionMenu<cr>", { noremap = true, silent = true, desc = "show code actions" })
+
 set(
 	{ "n", "v" },
 	"<leader>la",
@@ -275,12 +274,8 @@ end, { noremap = true, silent = false, desc = "show treesitter highlight group" 
 -- symbols-outline
 set("n", "<leader>N", "<cmd>SymbolsOutline<cr>", { silent = true, desc = "show symbol outline" })
 
--- packer
-set("n", "<leader>xc", "<cmd>PackerCompile<cr>", { noremap = true, silent = true, desc = "compile" })
-set("n", "<leader>xi", "<cmd>PackerInstall<cr>", { noremap = true, silent = true, desc = "install" })
-set("n", "<leader>xs", "<cmd>PackerSync<cr>", { noremap = true, silent = true, desc = "sync" })
-set("n", "<leader>xS", "<cmd>PackerStatus<cr>", { noremap = true, silent = true, desc = "status" })
-set("n", "<leader>xu", "<cmd>PackerUpdate<cr>", { noremap = true, silent = true, desc = "update" })
+-- lazy
+set("n", "<leader>xx", "<cmd>Lazy<cr>", { noremap = true, silent = true, desc = "Lazy" })
 
 -- portal
 set(

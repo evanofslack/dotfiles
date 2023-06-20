@@ -21,9 +21,11 @@ alias gs="git status"
 alias gc="git commit -m"
 alias ga="git add"
 alias gpl="git pull"
+alias gplr="git pull --rebase"
 alias gps="git push"
 alias gco="git checkout"
 alias gcl="git clone"
+alias gfo="git fetch origin"
 
 # edit
 alias tm="tmux"

@@ -106,7 +106,6 @@ end, { desc = "search with grep" })
 -- set("n", "<leader>fg", builtin.live_grep, { desc = "search with grep" })
 -- set("n", "<leader>fg", ext.live_grep_args.live_grep_args, { desc = "search with grep" })
 
--- set("n", "<leader>fb", ":Telescope file_browser<cr>", { desc = "browse files" })
 set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "search undo history" })
 set("n", "<leader>fy", "<cmd>Telescope neoclip<cr>", { desc = "search clipboard history" })
 set("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "navigate with zoxide" })
@@ -167,9 +166,6 @@ set(
 	{ noremap = true, silent = true, desc = "go to implementations" }
 )
 
--- set(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true, silent = true, desc = "" })
--- set("n", "<leader>la", "<cmd>CodeActionMenu<cr>", { noremap = true, silent = true, desc = "show code actions" })
-
 set(
 	{ "n", "v" },
 	"<leader>la",
@@ -204,7 +200,6 @@ set(
 )
 set("n", "<leader>li", "<cmd>LspInfo<cr>", { noremap = true, silent = true, desc = "see attached LSP info" })
 set("n", "<leader>lm", "<cmd>Mason<cr>", { noremap = true, silent = true, desc = "see Mason info" })
--- set("n", "<Leader>lt", require("lsp_lines").toggle, { desc = "toggle lsp_lines" })
 set("n", "<Leader>lt", function()
 	local val = not vim.diagnostic.config().virtual_text
 	vim.diagnostic.config({ virtual_text = val })
@@ -215,12 +210,33 @@ end, { desc = "toggle lsp_lines" })
 -- advanced git search
 set("n", "<leader>hb", ext.advanced_git_search.diff_branch_file, { desc = "diff branches of current file" })
 set("n", "<leader>hf", ext.advanced_git_search.diff_commit_file, { desc = "diff commits of current file" })
-set("n", "<leader>hl", ext.advanced_git_search.diff_commit_line, { desc = "diff commits of visually selected lines" })
 set("n", "<leader>hc", ext.advanced_git_search.search_log_content, { desc = "search all previous commits" })
-set("n", "<leader>hcf", ext.advanced_git_search.search_log_content_file, { desc = "search commits for current file" })
+set("n", "<leader>hg", ext.advanced_git_search.search_log_content_file, { desc = "search commits for current file" })
 set("n", "<leader>hr", ext.advanced_git_search.checkout_reflog, { desc = "search reflog" })
 
 -- gitsigns
+set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { noremap = true, silent = true, desc = "stage hunk" })
+set({ "n", "v" }, "<leader>hu", ":Gitsigns reset_hunk<CR>", { noremap = true, silent = true, desc = "unstage hunk" })
+set("n", "<leader>hS", ":Gitsigns stage_buffer<CR>", { noremap = true, silent = true, desc = "stage buffer" })
+set("n", "<leader>hU", ":Gitsigns undo_stage_hunk<CR>", { noremap = true, silent = true, desc = "undo stage buffer" })
+set("n", "<leader>hR", ":Gitsigns reset_buffer<CR>", { noremap = true, silent = true, desc = "reset buffer" })
+set("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", { noremap = true, silent = true, desc = "preview buffer" })
+set(
+	"n",
+	"<leader>ht",
+	":Gitsigns toggle_current_line_blame<CR>",
+	{ noremap = true, silent = true, desc = "toggle blame line" }
+)
+
+-- diffview
+set("n", "<leader>hd", ":DiffviewOpen<CR>", { noremap = true, silent = true, desc = "diff" })
+set("n", "<leader>hh", ":DiffviewFileHistory<CR>", { noremap = true, silent = true, desc = "file history" })
+
+-- git mergetool
+set("n", "<leader>h1", "<cmd> diffget LOCAL<CR>", { noremap = true, silent = true, desc = "pick local" })
+set("n", "<leader>h2", "<cmd> diffget BASE<CR>", { noremap = true, silent = true, desc = "pick base" })
+set("n", "<leader>h3", "<cmd> diffget REMOTE<CR>", { noremap = true, silent = true, desc = "pick remote" })
+
 local gs = package.loaded.gitsigns
 set("n", "]c", function()
 	if vim.wo.diff then
@@ -241,25 +257,6 @@ set("n", "[c", function()
 	end)
 	return "<Ignore>"
 end, { expr = true, desc = "navigate to previous git hunk" })
-
-set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { noremap = true, silent = true, desc = "stage hunk" })
-set({ "n", "v" }, "<leader>hu", ":Gitsigns reset_hunk<CR>", { noremap = true, silent = true, desc = "unstage hunk" })
-set("n", "<leader>hS", ":Gitsigns stage_buffer<CR>", { noremap = true, silent = true, desc = "stage buffer" })
-set("n", "<leader>hU", ":Gitsigns undo_stage_hunk<CR>", { noremap = true, silent = true, desc = "undo stage buffer" })
-set("n", "<leader>hR", ":Gitsigns reset_buffer<CR>", { noremap = true, silent = true, desc = "reset buffer" })
-set("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", { noremap = true, silent = true, desc = "preview buffer" })
-set(
-	"n",
-	"<leader>ht",
-	":Gitsigns toggle_current_line_blame<CR>",
-	{ noremap = true, silent = true, desc = "toggle blame line" }
-)
-set("n", "<leader>hd", ":Gitsigns diffthis<CR>", { noremap = true, silent = true, desc = "diff" })
-
--- git mergetool
-set("n", "<leader>h1", "<cmd> diffget LOCAL<CR>", { noremap = true, silent = true, desc = "pick local" })
-set("n", "<leader>h2", "<cmd> diffget BASE<CR>", { noremap = true, silent = true, desc = "pick base" })
-set("n", "<leader>h3", "<cmd> diffget REMOTE<CR>", { noremap = true, silent = true, desc = "pick remote" })
 
 -- trouble
 set("n", "<leader>fd", "<cmd>TroubleToggle<cr>", { silent = true, desc = "show diagnostics" })

@@ -35,6 +35,7 @@ opt.signcolumn = "yes"
 -- opt.colorcolumn = "100"
 opt.laststatus = 2
 opt.cursorline = true
+opt.fillchars:append { diff = "╱" }
 
 -- spacing
 opt.autoindent = true

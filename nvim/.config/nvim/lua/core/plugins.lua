@@ -98,6 +98,7 @@ require("lazy").setup({
 	"ziontee113/color-picker.nvim", -- color picker
 	"tpope/vim-fugitive", -- git
 	"tpope/vim-rhubarb", -- github
+	"sindrets/diffview.nvim", -- diff and merge conflicts
 	"ThePrimeagen/harpoon", -- mark-like navigator
 	"nosduco/remote-sshfs.nvim", -- remote filesystem
 	"luukvbaal/statuscol.nvim", -- status column improvements

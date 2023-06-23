@@ -52,6 +52,8 @@ end, { noremap = true, silent = false, desc = "quicksave w/ format" })
 
 -- close buffer without closing window layout
 set("n", "<leader>bd", "<cmd>Bdelete<cr>", { noremap = true, silent = false, desc = "close buffer" })
+set("n", "<leader>bv", "<cmd>:vsplit<cr>", { noremap = true, silent = false, desc = "split buffer vertically" })
+set("n", "<leader>bh", "<cmd>:split<cr>", { noremap = true, silent = false, desc = "split buffer horizontally" })
 
 -- copy/paste from system clipboard
 set({ "n", "v" }, "<c-y>", [["+y]])

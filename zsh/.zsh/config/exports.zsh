@@ -3,6 +3,7 @@ export PATH=$PATH:$(go env GOPATH)/bin # golang
 export PATH=$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH # find
 export PATH="${PATH}:${HOME}/.krew/bin" # krew
 export PATH="$HOME/.cargo/bin:$PATH" # cargo
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH" # nvim manager
 
 # pyenv
 export PATH="$PYENV_ROOT/bin:$PATH"

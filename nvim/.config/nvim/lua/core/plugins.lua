@@ -27,6 +27,7 @@ require("lazy").setup({
 	"stevearc/dressing.nvim", -- window ui
 	"simrat39/symbols-outline.nvim", -- tree view for lsp symbols
 	"noib3/nvim-cokeline", -- bufferline
+	'dstein64/nvim-scrollview', -- scrollbar
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- statusline
 	{ "goolord/alpha-nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- start page
 	{ "j-hui/fidget.nvim", version = "legacy" }, -- lsp loading progress
@@ -51,6 +52,7 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
 	},
+	{ "haringsrob/nvim_context_vt", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 
 	-- lsp
 	"neovim/nvim-lspconfig",

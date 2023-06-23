@@ -45,12 +45,13 @@
 	light = false
 
 [core]
+	editor = nvim
+
 	# treat spaces before tabs and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 	# make `git rebase` safer on OS X
 	trustctime = false
-	editor = vim
 
 	# exclude some junk
 	excludesfile = ~/.gitignore_global

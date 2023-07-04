@@ -3,8 +3,7 @@ local fn = vim.fn
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
-		"git",
-		"clone",
+		"git", "clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
 		"--branch=stable", -- latest stable release
@@ -17,10 +16,8 @@ require("lazy").setup({
 
 	-------------------- ui --------------------
 
-	-- themes
 	"evanofslack/gruvbox.nvim", -- the best colorscheme
 	"sitiom/nvim-numbertoggle", -- switch between relative and absolute line numbers
-	"lewis6991/gitsigns.nvim", -- git icons in gutter
 	"lukas-reineke/indent-blankline.nvim", -- visual identation guide
 	"yamatsum/nvim-cursorline", -- hightlight word under cursor
 	"smjonas/inc-rename.nvim", -- visual renaming
@@ -28,6 +25,10 @@ require("lazy").setup({
 	"simrat39/symbols-outline.nvim", -- tree view for lsp symbols
 	"noib3/nvim-cokeline", -- bufferline
 	'dstein64/nvim-scrollview', -- scrollbar
+	"luukvbaal/statuscol.nvim", -- status column improvements
+	"tzachar/highlight-undo.nvim", -- highlight undos
+	"norcalli/nvim-colorizer.lua", -- color highlighter
+	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" }, -- folding
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- statusline
 	{ "goolord/alpha-nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- start page
 	{ "j-hui/fidget.nvim", version = "legacy" }, -- lsp loading progress
@@ -85,32 +86,40 @@ require("lazy").setup({
 
 	-------------------- utility --------------------
 
+	-- git
+	"tpope/vim-fugitive", -- git
+	"tpope/vim-rhubarb", -- github
+	"sindrets/diffview.nvim", -- diff and merge conflicts
+	'linrongbin16/gitlinker.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, -- git permalinks
+	"lewis6991/gitsigns.nvim", -- git icons in gutter
+
+	-- movement
+	"alexghergh/nvim-tmux-navigation", -- navigate tmux
+	"ggandor/leap.nvim", -- quick jumps
+	"cbochs/portal.nvim", -- quick jump through lists
+	 -- "folke/flash.nvim", -- quick jumps
+
+	-- misc
 	"numToStr/Comment.nvim", -- comment lines
 	"famiu/bufdelete.nvim", -- delete buffers without changing layout
 	"wakatime/vim-wakatime", -- track coding stats
 	"ActivityWatch/aw-watcher-vim", -- track activity stats
-	"norcalli/nvim-colorizer.lua", -- color highlighter
 	"tpope/vim-sleuth", -- detect tabstop and shiftwidth automatically
 	"windwp/nvim-autopairs", -- autopair symbols
 	"karb94/neoscroll.nvim", -- smooth scroll
 	"rcarriga/nvim-notify", -- notifications
-	"folke/which-key.nvim", --keymappings
+	"folke/which-key.nvim", -- keymappings
 	"folke/zen-mode.nvim", -- go zen mode
 	"ziontee113/icon-picker.nvim", -- pick nerdfont icons
 	"ziontee113/color-picker.nvim", -- color picker
-	"tpope/vim-fugitive", -- git
-	"tpope/vim-rhubarb", -- github
-	"sindrets/diffview.nvim", -- diff and merge conflicts
 	"ThePrimeagen/harpoon", -- mark-like navigator
 	"nosduco/remote-sshfs.nvim", -- remote filesystem
-	"luukvbaal/statuscol.nvim", -- status column improvements
-	"tzachar/highlight-undo.nvim", -- highlight undos
-	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" }, -- folding
 	{ "kylechui/nvim-surround", version = "*" }, -- change matching tags
 	{ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons" }, -- diagnostics
 	{ "akinsho/toggleterm.nvim", version = "*", config = true }, -- hover terminal
 	{ "Bryley/neoai.nvim", dependencies = "MunifTanjim/nui.nvim" }, -- chatGPT in the editor
 	{ "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- file explorer
+	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	{
 		"kndndrj/nvim-dbee",
 		dependencies = {
@@ -134,9 +143,4 @@ require("lazy").setup({
 		},
 	}, -- run tests
 
-	-------------------- movement --------------------
-
-	"alexghergh/nvim-tmux-navigation", -- navigate tmux
-	"ggandor/leap.nvim", -- quick jumping
-	"cbochs/portal.nvim", -- quick jump through lists
 })

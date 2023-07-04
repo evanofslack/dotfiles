@@ -84,7 +84,7 @@ null_ls.setup({
 		}),
 		-- diagnostics.hadolint,
 		diagnostics.markdownlint,
-		diagnostics.todo_comments,
+		-- diagnostics.todo_comments,
 		-- diagnostics.trail_space,
 		diagnostics.zsh,
 

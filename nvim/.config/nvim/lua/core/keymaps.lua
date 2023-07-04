@@ -43,7 +43,7 @@ set("n", "<leader>n", "<cmd>NvimTreeToggle<cr>", { noremap = true, silent = true
 -- quicksave
 set("n", "<leader>w", ":w<cr>", { silent = false, desc = "quicksave" })
 -- quicksave w/o running autocmds (formatting, reloads, etc)
-set("n", "<c-w>", "<cmd>noautocmd w<cr>", { noremap = true, silent = false, desc = "quicksave no autocommand"})
+set("n", "<c-w>", "<cmd>noautocmd w<cr>", { noremap = true, silent = false, desc = "quicksave no autocommand" })
 -- quicksave and format
 set("n", "<leader><s-w>", function()
 	vim.lsp.buf.format({ async = true })
@@ -68,7 +68,7 @@ set("v", "<c-k>", ":m '<-2<CR>gv=gv")
 set({ "n", "v" }, "<Left>", ":vertical resize +1<CR>", default_opts)
 set({ "n", "v" }, "<Right>", ":vertical resize -1<CR>", default_opts)
 set({ "n", "v" }, "<Up>", ":resize -1<CR>", default_opts)
-set({ "n", "v"  }, "<Down>", ":resize +1<CR>", default_opts)
+set({ "n", "v" }, "<Down>", ":resize +1<CR>", default_opts)
 
 -- telescope
 local builtin = require("telescope.builtin")
@@ -112,8 +112,8 @@ set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "search undo history"
 set("n", "<leader>fy", "<cmd>Telescope neoclip<cr>", { desc = "search clipboard history" })
 set("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "navigate with zoxide" })
 set("n", "<leader>fn", "<cmd>Telescope notify <cr>", { desc = "search notifications" })
+set("n", "<leader>ft", "<cmd>:TodoTelescope<cr>", { desc = "search todos" })
 
-set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "search in current buffer" })
 set("n", "<leader>fh", builtin.help_tags, { desc = "find help" })
 set("n", "<leader>fw", builtin.grep_string, { desc = "find current word" })
 set("n", "<leader>fq", builtin.quickfix, { desc = "find quickfix" })
@@ -230,6 +230,20 @@ set(
 	{ noremap = true, silent = true, desc = "toggle blame line" }
 )
 
+-- gitlinker
+set(
+	{ "n", "x" },
+	"<leader>hl",
+	'<cmd>lua require("gitlinker").link({action = require("gitlinker.actions").clipboard})<cr>',
+	{ desc = "Copy git link to clipboard" }
+)
+set(
+	{ "n", "x" },
+	"<leader>hL",
+	'<cmd>lua require("gitlinker").link({action = require("gitlinker.actions").system})<cr>',
+	{ desc = "Open git link in browser" }
+)
+
 -- diffview
 set("n", "<leader>hd", ":DiffviewOpen<CR>", { noremap = true, silent = true, desc = "diff" })
 set("n", "<leader>hh", ":DiffviewFileHistory<CR>", { noremap = true, silent = true, desc = "file history" })
@@ -264,6 +278,15 @@ end, { expr = true, desc = "navigate to previous git hunk" })
 set("n", "<leader>fd", "<cmd>TroubleToggle<cr>", { silent = true, desc = "show diagnostics" })
 -- set("n", "<leader>gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, desc = "lsp references (trouble)" })
 
+-- todo comments
+set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
 -- show treesitter capture group for textobject under cursor.
 set("n", "<leader>sh", function()
 	local result = vim.treesitter.get_captures_at_cursor(0)
@@ -274,7 +297,7 @@ end, { noremap = true, silent = false, desc = "show treesitter highlight group" 
 set("n", "<leader>N", "<cmd>SymbolsOutline<cr>", { silent = true, desc = "show symbol outline" })
 
 -- lazy
-set("n", "<leader>xx", "<cmd>Lazy<cr>", { noremap = true, silent = true, desc = "Lazy" })
+set("n", "<leader>x", "<cmd>Lazy<cr>", { noremap = true, silent = true, desc = "lazy" })
 
 -- portal
 set(

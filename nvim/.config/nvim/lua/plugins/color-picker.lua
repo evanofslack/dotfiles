@@ -1,5 +1,5 @@
 require("color-picker").setup({ -- for changing icons & mappings
-	["icons"] = { "ﱢ", "" },
+	["icons"] = { "󰝤", "" },
 	["border"] = "rounded", -- none | single | double | rounded | solid | shadow
 	["keymap"] = { -- mapping example:
 		["J"] = "<Plug>ColorPickerSlider5Decrease",

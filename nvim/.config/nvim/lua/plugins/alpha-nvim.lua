@@ -33,12 +33,13 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 dashboard.section.buttons.val = {
-	button("a", " " .. " new file", ":ene <BAR> startinsert <CR>"),
+
+	button("a", " " .. " new file", ":ene <BAR> startinsert <CR>"),
 	button("f", " " .. " find file", ":Telescope find_files <CR>"),
-	button("r", " " .. " recent files", ":Telescope oldfiles <CR>"),
-	button("t", " " .. " find text", ":Telescope live_grep <CR>"),
-	button("n", "פּ " .. " file tree", ":NvimTreeToggle<CR>"),
-	button("l", "鈴" .. " lazy", ":Lazy <CR>"),
+	button("r", "󰄉 " .. " recent files", ":Telescope oldfiles <CR>"),
+	button("t", "󰍉 " .. " find text", ":Telescope live_grep <CR>"),
+	button("n", "󰙅 " .. " file tree", ":NvimTreeToggle<CR>"),
+	button("l", "󰒲 " .. " lazy", ":Lazy <CR>"),
 
 	button(
 		"g",
@@ -56,7 +57,7 @@ local function footer()
 	local nvim_version_info = "   nvim v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
 	 local stats = require("lazy").stats()
-	 local plugins = "    " .. stats.count .. " plugins"
+	 local plugins = "   󰂖 " .. stats.count .. " plugins"
 
 	return datetime .. nvim_version_info .. plugins
 end

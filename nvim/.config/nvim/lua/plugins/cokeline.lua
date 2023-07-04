@@ -49,7 +49,7 @@ require("cokeline").setup({
 			},
 		},
 		{
-			text = "",
+			text = "󰅖",
 			fg = function(buffer)
 				return buffer.is_focused and get_hex("Normal", "fg")
 			end,

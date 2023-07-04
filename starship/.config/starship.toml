@@ -12,7 +12,7 @@ gray = "245"
 
 [character]
 success_symbol = '[](bold sky)'
-error_symbol = '[](bold red)'
+error_symbol = '[󰅖](bold red)'
 
 # ---------- modules ----------
 
@@ -35,7 +35,7 @@ symbol = " "
 
 [directory]
 truncation_symbol = '/'
-read_only = " "
+read_only = " 󰌾"
 read_only_style = 'orange'
 truncation_length = 3
 
@@ -108,13 +108,13 @@ symbol = " "
 format = '\[[$symbol($version)]($style)\]'
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [meson]
-symbol = "喝 "
+symbol = "󰔷 "
 
 [nim]
-symbol = " "
+symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
@@ -138,10 +138,10 @@ Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
-Garuda = "﯑ "
+Garuda = "󰛓 "
 Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
 Linux = " "
 Macos = " "
 Manjaro = " "
@@ -150,23 +150,23 @@ MidnightBSD = " "
 Mint = " "
 NetBSD = " "
 NixOS = " "
-OpenBSD = " "
+OpenBSD = "󰈺 "
 openSUSE = " "
-OracleLinux = " "
+OracleLinux = "󰌷 "
 Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
 Redox = " "
-Solus = "ﴱ "
+Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = "󰍲 "
 
 [package]
 disabled = true
-symbol = " "
+symbol = "󰏗 "
 format = '\[[$symbol$version]($style)\]'
 
 [python]
@@ -174,7 +174,7 @@ symbol = " "
 format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
 
 [rlang]
-symbol = "ﳒ "
+symbol = "󰟔 "
 
 [ruby]
 symbol = " "
@@ -192,7 +192,7 @@ symbol = "🅢 "
 
 [sudo]
 style = 'bold green'
-symbol =  ''
+symbol =  '󰌋'
 disabled = true
 format = 'as[ $symbol ]($style)'
 

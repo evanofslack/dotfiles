@@ -188,6 +188,8 @@ set(
 	{ noremap = true, silent = true, desc = "go to previous diagnostic" }
 )
 -- set(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap = true, silent = true, desc = "" }) -- redefined in inc-rename
+
+set("n", "<leader>ss", ":SearchBoxReplace<CR>")
 set(
 	"n",
 	"<leader>ls",

@@ -3,7 +3,8 @@ local fn = vim.fn
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
-		"git", "clone",
+		"git",
+		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
 		"--branch=stable", -- latest stable release
@@ -18,20 +19,20 @@ require("lazy").setup({
 
 	"evanofslack/gruvbox.nvim", -- the best colorscheme
 	"sitiom/nvim-numbertoggle", -- switch between relative and absolute line numbers
-	"lukas-reineke/indent-blankline.nvim", -- visual identation guide
+	"shellRaining/hlchunk.nvim", -- chunk context highlighting
 	"yamatsum/nvim-cursorline", -- hightlight word under cursor
 	"smjonas/inc-rename.nvim", -- visual renaming
 	"stevearc/dressing.nvim", -- window ui
 	"simrat39/symbols-outline.nvim", -- tree view for lsp symbols
 	"noib3/nvim-cokeline", -- bufferline
-	'dstein64/nvim-scrollview', -- scrollbar
+	"dstein64/nvim-scrollview", -- scrollbar
 	"luukvbaal/statuscol.nvim", -- status column improvements
 	"tzachar/highlight-undo.nvim", -- highlight undos
 	"norcalli/nvim-colorizer.lua", -- color highlighter
 	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" }, -- folding
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- statusline
 	{ "goolord/alpha-nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- start page
-	{ "j-hui/fidget.nvim", version = "legacy" }, -- lsp loading progress
+	{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- lsp loading progress
 
 	-------------------- core --------------------
 
@@ -53,7 +54,7 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
 	},
-	{ "haringsrob/nvim_context_vt", dependencies = { "nvim-treesitter/nvim-treesitter" } },
+	-- { "haringsrob/nvim_context_vt", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 
 	-- lsp
 	"neovim/nvim-lspconfig",
@@ -67,6 +68,7 @@ require("lazy").setup({
 	"dnlhc/glance.nvim", -- lsp locations UI
 	"VidocqH/lsp-lens.nvim", -- display reference counts
 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- render lsp errors as virtual text
+	"dgagn/diagflow.nvim",
 
 	-- cmp
 	"hrsh7th/nvim-cmp", -- the completion plugin
@@ -90,14 +92,15 @@ require("lazy").setup({
 	"tpope/vim-fugitive", -- git
 	"tpope/vim-rhubarb", -- github
 	"sindrets/diffview.nvim", -- diff and merge conflicts
-	'linrongbin16/gitlinker.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, -- git permalinks
+	"linrongbin16/gitlinker.nvim",
+	dependencies = { "nvim-lua/plenary.nvim" }, -- git permalinks
 	"lewis6991/gitsigns.nvim", -- git icons in gutter
 
 	-- movement
 	"alexghergh/nvim-tmux-navigation", -- navigate tmux
 	"ggandor/leap.nvim", -- quick jumps
 	"cbochs/portal.nvim", -- quick jump through lists
-	 -- "folke/flash.nvim", -- quick jumps
+	-- "folke/flash.nvim", -- quick jumps
 
 	-- misc
 	"numToStr/Comment.nvim", -- comment lines
@@ -120,14 +123,15 @@ require("lazy").setup({
 	{ "Bryley/neoai.nvim", dependencies = "MunifTanjim/nui.nvim" }, -- chatGPT in the editor
 	{ "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- file explorer
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "VonHeikemen/searchbox.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
 	{
 		"kndndrj/nvim-dbee",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
-		  build = function()
+		build = function()
 			require("dbee").install("go")
-		  end,
+		end,
 	}, -- db client
 	{ "mfussenegger/nvim-dap", dependencies = { "rcarriga/nvim-dap-ui", "nvim-telescope/telescope-dap.nvim" } }, -- run debugger
 	{
@@ -142,5 +146,4 @@ require("lazy").setup({
 			"nvim-neotest/neotest-vim-test",
 		},
 	}, -- run tests
-
 })

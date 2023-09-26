@@ -51,6 +51,19 @@ function arch() {
     stow --verbose --target=$HOME --restow zsh
 }
 
+function wasabi() {
+    stow --verbose --target=$HOME --restow atuin
+    stow --verbose --target=$HOME --restow bat
+    stow --verbose --target=$HOME --restow btop
+    stow --verbose --target=$HOME --restow gh
+    stow --verbose --target=$HOME --restow git
+    stow --verbose --target=$HOME --restow joshuto
+    stow --verbose --target=$HOME --restow nvim
+    stow --verbose --target=$HOME --restow starship
+    stow --verbose --target=$HOME --restow vim
+    stow --verbose --target=$HOME --restow bash
+}
+
 function remote() {
     stow --verbose --target=$HOME --restow bash
     stow --verbose --target=$HOME --restow git

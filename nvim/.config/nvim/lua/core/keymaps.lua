@@ -70,6 +70,10 @@ set({ "n", "v" }, "<Right>", ":vertical resize -1<CR>", default_opts)
 set({ "n", "v" }, "<Up>", ":resize -1<CR>", default_opts)
 set({ "n", "v" }, "<Down>", ":resize +1<CR>", default_opts)
 
+-- increment/decrement
+set({ "n", "v" }, "<c-m>", "<c-a>", default_opts)
+set({ "n", "v" }, "<c-n>", "<c-x>", default_opts)
+
 -- telescope
 local builtin = require("telescope.builtin")
 local ext = require("telescope").extensions
@@ -211,13 +215,6 @@ set("n", "<Leader>lt", function()
 	vim.notify("lsp virtual text set to " .. tostring(val))
 end, { desc = "toggle lsp_lines" })
 
--- advanced git search
-set("n", "<leader>hb", ext.advanced_git_search.diff_branch_file, { desc = "diff branches of current file" })
-set("n", "<leader>hf", ext.advanced_git_search.diff_commit_file, { desc = "diff commits of current file" })
-set("n", "<leader>hc", ext.advanced_git_search.search_log_content, { desc = "search all previous commits" })
-set("n", "<leader>hg", ext.advanced_git_search.search_log_content_file, { desc = "search commits for current file" })
-set("n", "<leader>hr", ext.advanced_git_search.checkout_reflog, { desc = "search reflog" })
-
 -- gitsigns
 set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { noremap = true, silent = true, desc = "stage hunk" })
 set({ "n", "v" }, "<leader>hu", ":Gitsigns reset_hunk<CR>", { noremap = true, silent = true, desc = "unstage hunk" })
@@ -247,13 +244,9 @@ set(
 )
 
 -- diffview
-set("n", "<leader>hd", ":DiffviewOpen<CR>", { noremap = true, silent = true, desc = "diff" })
-set("n", "<leader>hh", ":DiffviewFileHistory<CR>", { noremap = true, silent = true, desc = "file history" })
-
--- git mergetool
-set("n", "<leader>h1", "<cmd> diffget LOCAL<CR>", { noremap = true, silent = true, desc = "pick local" })
-set("n", "<leader>h2", "<cmd> diffget BASE<CR>", { noremap = true, silent = true, desc = "pick base" })
-set("n", "<leader>h3", "<cmd> diffget REMOTE<CR>", { noremap = true, silent = true, desc = "pick remote" })
+set("n", "<leader>hd", ":DiffviewOpen<CR>", { noremap = true, silent = true, desc = "open file diff" })
+set("n", "<leader>hc", ":DiffviewClose<CR>", { noremap = true, silent = true, desc = "close file diff" })
+set("n", "<leader>hh", ":DiffviewFileHistory %<CR>", { noremap = true, silent = true, desc = "file history" })
 
 local gs = package.loaded.gitsigns
 set("n", "]c", function()

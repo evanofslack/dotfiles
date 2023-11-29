@@ -144,6 +144,7 @@ require("lazy").setup({
 			"nvim-neotest/neotest-go",
 			"rouge8/neotest-rust",
 			"nvim-neotest/neotest-vim-test",
+			'leoluz/nvim-dap-go'
 		},
 	}, -- run tests
 })

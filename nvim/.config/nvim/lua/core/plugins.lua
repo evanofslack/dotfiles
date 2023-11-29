@@ -92,9 +92,9 @@ require("lazy").setup({
 	"tpope/vim-fugitive", -- git
 	"tpope/vim-rhubarb", -- github
 	"sindrets/diffview.nvim", -- diff and merge conflicts
-	"linrongbin16/gitlinker.nvim",
-	dependencies = { "nvim-lua/plenary.nvim" }, -- git permalinks
 	"lewis6991/gitsigns.nvim", -- git icons in gutter
+	{'akinsho/git-conflict.nvim', version = "1.2.2", config = true}, -- merge conflicts
+	{"linrongbin16/gitlinker.nvim", dependencies =  "nvim-lua/plenary.nvim" }, -- git permalinks
 
 	-- movement
 	"alexghergh/nvim-tmux-navigation", -- navigate tmux

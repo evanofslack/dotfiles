@@ -7,10 +7,10 @@ alias .....="cd ../../../.."
 alias c="clear"
 alias cl="clear"
 
-alias l="exa --sort Name --group-directories-first"
-alias ls="exa --sort Name --group-directories-first"
-alias ll="exa --sort Name --long --group-directories-first --header --no-permissions"
-alias la="exa --sort Name --long --all --group-directories-first --header --no-permissions"
+alias l="eza --sort Name --group-directories-first"
+alias ls="eza --sort Name --group-directories-first"
+alias ll="eza --sort Name --long --group-directories-first --header --no-permissions"
+alias la="eza --sort Name --long --all --group-directories-first --header --no-permissions"
 
 alias path='echo -e ${PATH//:/\\n}'
 

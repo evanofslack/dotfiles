@@ -75,7 +75,7 @@ require("lazy").setup({
 	-- cmp
 	{
 		"saghen/blink.cmp",
-		version = 'v0.*',
+		version = "v0.*",
 	},
 	-- "hrsh7th/nvim-cmp", -- the completion plugin
 	-- "hrsh7th/cmp-buffer", -- buffer completions
@@ -152,6 +152,7 @@ require("lazy").setup({
 			"rouge8/neotest-rust",
 			"nvim-neotest/neotest-vim-test",
 			"nvim-neotest/nvim-nio",
+			"leoluz/nvim-dap-go",
 		},
 	}, -- run tests
 })

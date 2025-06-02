@@ -19,3 +19,8 @@ done
 
 # load end files last
 [[ -f ~/.zsh/end.zsh ]] && source ~/.zsh/end.zsh
+
+# Created by `pipx` on 2024-09-01 17:05:32
+export PATH="$PATH:/Users/eslack/.local/bin"
+
+export GOPRIVATE=github.com/bluearchive/*

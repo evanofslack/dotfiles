@@ -12,9 +12,13 @@ eval "$(pyenv init -)"
 
 # editor
 export EDITOR=nvim
+export BROWSER=Firefox
 
 # sops age key
 export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt
+
+# switcher (k8s)
+source <(switcher init zsh)
 
 # gvm
 [[ -s "/Users/eslack/.gvm/scripts/gvm" ]] && source "/Users/eslack/.gvm/scripts/gvm"

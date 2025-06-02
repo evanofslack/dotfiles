@@ -26,6 +26,8 @@ alias gps="git push"
 alias gco="git checkout"
 alias gcl="git clone"
 alias gfo="git fetch origin"
+alias gfoco="git fetch origin && git checkout"
+alias gcp="git cherry-pick"
 
 # edit
 alias tm="tmux"

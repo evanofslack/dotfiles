@@ -12,6 +12,7 @@ alias l="ls --color=always"
 alias ll="ls -l"
 alias la="ls -lA"
 
+alias lg="lazygit"
 alias g="git"
 alias gs="git status"
 alias gc="git commit -m"
@@ -27,11 +28,6 @@ alias dk="docker"
 alias dc="docker compose"
 alias dcf="docker compose up --build --force-recreate"
 alias dcl="docker compose logs --follow"
-
-alias editz="vim ~/.bashrc"
-alias edita="vim ~/.aliases"
-alias editv="vim ~/.vimrc"
-alias editc="cd ~/.config"
 
 alias sourcez="source ~/.bashrc"
 alias path='echo -e ${PATH//:/\\n}'

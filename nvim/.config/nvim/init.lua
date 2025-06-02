@@ -1,8 +1,2 @@
--- map leader to space
-vim.g.mapleader = " "
-
-require("core.plugins")
-require("plugins")
-require("core.keymaps")
-require("core.settings")
-require("core.commands")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

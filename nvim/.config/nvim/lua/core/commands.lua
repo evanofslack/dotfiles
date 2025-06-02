@@ -61,3 +61,16 @@ vim.keymap.set("n", "<Leader>bu", function()
 		end
 	end
 end, { silent = true, desc = "Close untouched buffers" })
+
+-- lazy shift finger
+vim.cmd("cnoreabbrev W w")
+vim.cmd("cnoreabbrev Q q")
+vim.cmd("cnoreabbrev W! w!")
+vim.cmd("cnoreabbrev Q! q!")
+vim.cmd("cnoreabbrev Qa qa")
+vim.cmd("cnoreabbrev Qa! qa!")
+vim.cmd("cnoreabbrev Wq wq")
+vim.cmd("cnoreabbrev Wa wa")
+vim.cmd("cnoreabbrev wQ wq")
+vim.cmd("cnoreabbrev WQ wq")
+vim.cmd("cnoreabbrev Wqa wqa")

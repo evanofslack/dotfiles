@@ -269,6 +269,9 @@ set("n", "[c", function()
 	return "<Ignore>"
 end, { expr = true, desc = "navigate to previous git hunk" })
 
+-- git blame pr
+set("n", "<leader>hb", "<cmd>GhBlameCurrentLine<cr>", { noremap = true, silent = true, desc = "blame current line" })
+
 -- trouble
 set("n", "<leader>fd", "<cmd>TroubleToggle<cr>", { silent = true, desc = "show diagnostics" })
 -- set("n", "<leader>gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, desc = "lsp references (trouble)" })

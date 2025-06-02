@@ -1,7 +1,7 @@
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_cmp_ok then
-	return
-end
+-- local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+-- if not status_cmp_ok then
+-- 	return
+-- end
 
 local M = {}
 
@@ -132,10 +132,10 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<leader>lm", "<cmd>Mason<cr>", { noremap = true, silent = true, desc = "see Mason info" })
 end
 
-M.capabilities = cmp_nvim_lsp.default_capabilities()
+-- M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
+	if client.name == "ts_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 

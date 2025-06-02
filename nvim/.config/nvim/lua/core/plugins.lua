@@ -33,6 +33,7 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- statusline
 	{ "goolord/alpha-nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- start page
 	{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- lsp loading progress
+	{ "mvllow/modes.nvim", tag = "v0.2.0" }, -- line highlights
 
 	-------------------- core --------------------
 
@@ -46,7 +47,7 @@ require("lazy").setup({
 	"aaronhallaert/advanced-git-search.nvim",
 	"LinArcX/telescope-env.nvim",
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "nvim-telescope/telescope.nvim", version = "0.1.0" },
+	{ "nvim-telescope/telescope.nvim", version = "0.1.4" },
 
 	-- treesitter
 	{
@@ -69,22 +70,27 @@ require("lazy").setup({
 	"VidocqH/lsp-lens.nvim", -- display reference counts
 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- render lsp errors as virtual text
 	"dgagn/diagflow.nvim",
+	-- { "nvimtools/none-ls.nvim", dependencies = "nvimtools/none-ls-extras.nvim" }, -- formatting / linting / diagnostics
 
 	-- cmp
-	"hrsh7th/nvim-cmp", -- the completion plugin
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path", -- path completions
-	"saadparwaiz1/cmp_luasnip", -- snippet completions
-	"hrsh7th/cmp-nvim-lsp-signature-help", -- function parameters
-	"hrsh7th/cmp-nvim-lsp", -- lsp completions
-	"hrsh7th/cmp-nvim-lua", -- lua completions
-	"dmitmel/cmp-cmdline-history", -- cmdline history completions
-	"hrsh7th/cmp-cmdline", -- cmdline buffer completions
-	"lukas-reineke/cmp-under-comparator", -- deprioritize underline prefixed suggestions
+	{
+		"saghen/blink.cmp",
+		version = 'v0.*',
+	},
+	-- "hrsh7th/nvim-cmp", -- the completion plugin
+	-- "hrsh7th/cmp-buffer", -- buffer completions
+	-- "hrsh7th/cmp-path", -- path completions
+	-- -- "saadparwaiz1/cmp_luasnip", -- snippet completions
+	-- "hrsh7th/cmp-nvim-lsp-signature-help", -- function parameters
+	-- "hrsh7th/cmp-nvim-lsp", -- lsp completions
+	-- "hrsh7th/cmp-nvim-lua", -- lua completions
+	-- "dmitmel/cmp-cmdline-history", -- cmdline history completions
+	-- "hrsh7th/cmp-cmdline", -- cmdline buffer completions
+	-- "lukas-reineke/cmp-under-comparator", -- deprioritize underline prefixed suggestions
 
 	-- snippets
-	"L3MON4D3/LuaSnip",
-	"rafamadriz/friendly-snippets",
+	-- "L3MON4D3/LuaSnip",
+	-- "rafamadriz/friendly-snippets",
 
 	-------------------- utility --------------------
 
@@ -93,8 +99,9 @@ require("lazy").setup({
 	"tpope/vim-rhubarb", -- github
 	"sindrets/diffview.nvim", -- diff and merge conflicts
 	"lewis6991/gitsigns.nvim", -- git icons in gutter
-	{'akinsho/git-conflict.nvim', version = "1.2.2", config = true}, -- merge conflicts
-	{"linrongbin16/gitlinker.nvim", dependencies =  "nvim-lua/plenary.nvim" }, -- git permalinks
+	{ "akinsho/git-conflict.nvim", version = "1.2.2", config = true }, -- merge conflicts
+	{ "linrongbin16/gitlinker.nvim", dependencies = "nvim-lua/plenary.nvim" }, -- git permalinks
+	{ "dlvhdr/gh-blame.nvim", dependencies = "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" }, -- git pr blame
 
 	-- movement
 	"alexghergh/nvim-tmux-navigation", -- navigate tmux
@@ -108,7 +115,7 @@ require("lazy").setup({
 	"wakatime/vim-wakatime", -- track coding stats
 	"ActivityWatch/aw-watcher-vim", -- track activity stats
 	"tpope/vim-sleuth", -- detect tabstop and shiftwidth automatically
-	"windwp/nvim-autopairs", -- autopair symbols
+	-- "windwp/nvim-autopairs", -- autopair symbols
 	"karb94/neoscroll.nvim", -- smooth scroll
 	"rcarriga/nvim-notify", -- notifications
 	"folke/which-key.nvim", -- keymappings
@@ -144,6 +151,7 @@ require("lazy").setup({
 			"nvim-neotest/neotest-go",
 			"rouge8/neotest-rust",
 			"nvim-neotest/neotest-vim-test",
+			"nvim-neotest/nvim-nio",
 		},
 	}, -- run tests
 })

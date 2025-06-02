@@ -88,12 +88,12 @@ null_ls.setup({
 		-- diagnostics.trail_space,
 		diagnostics.zsh,
 
-		diagnostics.cspell.with({
-			filetypes = { "markdown", "text" },
-		}),
-		code_actions.cspell.with({
-			filetypes = { "markdown", "text" },
-		}),
+		-- diagnostics.cspell.with({
+		-- 	filetypes = { "markdown", "text" },
+		-- }),
+		-- code_actions.cspell.with({
+		-- 	filetypes = { "markdown", "text" },
+		-- }),
 	},
 })
 

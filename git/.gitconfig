@@ -1,9 +1,8 @@
-[user]
+[permanentuser]
 	name = evan slack
 	email = evan.slack@outlook.com
 
 [alias]
-
 	# defaults
 	s = status
 	c = commit -m
@@ -46,6 +45,7 @@
 
 [core]
 	editor = nvim
+	pager = delta
 
 	# treat spaces before tabs and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
@@ -55,8 +55,9 @@
 
 	# exclude some junk
 	excludesfile = ~/.gitignore_global
-	pager = delta
 
+	# run git hooks
+	hookspath = ~/.githooks
 
 [diff]
 	# detect copies as well as renames
@@ -91,11 +92,12 @@
 	# automatically correct and execute mistyped commands
 	autocorrect = 2 # 2 seconds before auto executing
 
-; [url "ssh://git@github.com/"]
-;   insteadOf = https://github.com/
-
 [url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+    insteadOf = https://github.com/
 
 ; [url "git@github.com:"]
 ;   insteadOf = https://github.com/
+
+[user]
+	name = Evan Slack
+	email = evan.slack@outlook.com

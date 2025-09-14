@@ -94,7 +94,7 @@
 	autocorrect = 2 # 2 seconds before auto executing
 
 [user]
-	name = Evan Slack
+	name = evan slack
 	email = evan.slack@outlook.com
 
 [url "git@github.com:"]

@@ -93,12 +93,9 @@
 	# automatically correct and execute mistyped commands
 	autocorrect = 2 # 2 seconds before auto executing
 
-[url "ssh://git@github.com/"]
-    insteadOf = https://github.com/
-
-; [url "git@github.com:"]
-;   insteadOf = https://github.com/
-
 [user]
 	name = Evan Slack
 	email = evan.slack@outlook.com
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/

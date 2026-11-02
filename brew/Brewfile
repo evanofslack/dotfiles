@@ -33,10 +33,9 @@ brew "git-filter-repo"
 brew "lazygit"
 brew "worktrunk"
 
-# languages (node is installed with nvm by setup.sh)
+# languages (node via nvm and rust via rustup are installed by setup.sh)
 brew "go"
 brew "golangci-lint"
-brew "rustup"
 brew "pyenv"
 brew "uv"
 brew "protobuf"

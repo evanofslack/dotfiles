@@ -67,7 +67,13 @@ function stow_packages() {
 function install_tmux_plugins() {
     local tpm="$HOME/.tmux/plugins/tpm"
     [[ -d "$tpm" ]] || git clone https://github.com/tmux-plugins/tpm "$tpm"
+    # tpm reads its path from the tmux server's environment, which is unset when
+    # no server is running or the server started before tpm was installed.
+    # a throwaway session guarantees a server; it is killed afterwards.
+    tmux new-session -d -s tpm-setup
+    tmux set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.tmux/plugins/"
     "$tpm/bin/install_plugins"
+    tmux kill-session -t tpm-setup
 }
 
 function install_rust() {

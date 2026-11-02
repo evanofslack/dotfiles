@@ -87,13 +87,39 @@ function install_node() {
     set -u
 }
 
+# third-party tap formulae must be trusted before brew will load them
+function trust_taps() {
+    local brewfile="$1" tap formula
+    for tap in $(sed -n 's/^tap "\(.*\)"/\1/p' "$brewfile"); do
+        brew tap "$tap"
+    done
+    for formula in $(sed -n 's/^brew "\([^/"]*\/[^/"]*\/[^"]*\)"/\1/p' "$brewfile"); do
+        brew trust --formula "$formula"
+    done
+}
+
+function install_brew_packages() {
+    local brewfile="$DOTFILES/brew/Brewfile"
+    trust_taps "$brewfile"
+    # don't stop setup if a single package fails; report it at the end
+    if ! brew bundle --file="$brewfile"; then
+        BREW_FAILED=1
+        echo "WARNING: brew bundle had failures, continuing setup"
+    fi
+}
+
 function macos() {
     check brew
-    brew bundle --file="$DOTFILES/brew/Brewfile"
+    BREW_FAILED=0
+    install_brew_packages
     stow_packages "${MACOS_PACKAGES[@]}"
     install_tmux_plugins
     install_rust
     install_node
+    if [[ "$BREW_FAILED" == 1 ]]; then
+        echo "setup finished, but brew bundle had failures; scroll up for details"
+        exit 1
+    fi
 }
 
 function arch() {

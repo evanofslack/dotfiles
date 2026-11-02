@@ -1,7 +1,4 @@
-.PHONY: setup macos arch remote remove
-
-setup:
-		./setup.sh setup
+.PHONY: macos arch remote remove
 
 macos:
 		./setup.sh macos

@@ -8,7 +8,7 @@ esac
 export PAGER=less
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export GREP_OPTIONS=' — color=auto'
+alias grep='grep --color=auto'
 
 export PS1="\[\e[1;34m\]\u\[\e[m\]@\[\e[1;36m\]\h\[\e[m\] \[\e[1;33m\]\W\[\e[m\] \[\e[37m\]\\$\[\e[m\] "
 

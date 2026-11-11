@@ -28,6 +28,8 @@
     "cmd-alt-[": "space.prev",
     "cmd-]": "agent.next",
     "cmd-[": "agent.prev",
+    "cmd-shift-k": "agent.prev",
+    "cmd-shift-j": "agent.next",
     "cmd-shift-l": "layout.switch",
     "cmd-n": "mod.open:wt-new",
     "cmd-p": "mod.open:picker",

@@ -59,7 +59,7 @@ function stow_packages() {
     mkdir -p "$HOME/.config"
     # herdr writes app state and mods next to its config, so keep these dirs
     # real too, or stow folds them and that state lands in the repo
-    mkdir -p "$HOME/.config/herdr" "$HOME/.config/herdr-app/layouts" "$HOME/.config/herdr-app/themes"
+    mkdir -p "$HOME/.config/herdr" "$HOME/.config/herdr-app/layouts" "$HOME/.config/herdr-app/themes" "$HOME/.config/herdr-app/mods"
     cd "$DOTFILES"
     for pkg in "$@"; do
         backup_conflicts "$pkg"

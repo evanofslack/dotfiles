@@ -32,7 +32,7 @@
     "cmd-shift-j": "agent.next",
     "cmd-shift-l": "layout.switch",
     "cmd-n": "mod.open:wt-new",
-    "cmd-p": "mod.open:picker",
+    "cmd-p": "mod.open:picker-plus",
     "cmd-shift-p": "app.palette",
     "cmd-,": "app.settings",
     "cmd-d": "pane.split:right",

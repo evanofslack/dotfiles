@@ -3,7 +3,8 @@
 
 import { View, div, image, svg } from "gpui-kit";
 import { v_flex, h_flex } from "gpui-base";
-import { agents, terminals, panes, focused, spaces, run, theme, shared, setShared, setAgentOrder, openOverlay, closeOverlay, props, window, layout } from "herdr";
+import { agents, terminals, panes, focused, spaces, run, theme, shared, setShared, setAgentOrder, openOverlay, closeOverlay, props, window, layout, home, exec, readTextFile, watchFolder } from "herdr";
+import * as fs from "fs/promises";
 
 function find(node, id) {
   if (node?.id === id) return node;
@@ -57,6 +58,10 @@ function spaceFill(t, space) {
 // Absolute so the stripe doesn't push the row's contents right.
 const stripe = (fill, rowHeight) => div().absolute().left(1).top((rowHeight - 16) / 2).w(3).h(16).rounded(2).bg(fill);
 
+// Context used per agent terminal, one `<terminal>.json` each, written by
+// statusline.sh (Claude Code's status line). Herdr's agent list has no context data.
+const ctxDir = () => `${home()}/.cache/herdr-ctx`;
+
 const RANK = { blocked: 4, done: 3, working: 2, idle: 1 };
 // A sub-agent without a pane isn't in agents(): its raw word, error counting as
 // blocked. It's never done: it reports to its parent, and the parent's done is the news.
@@ -89,6 +94,19 @@ function icon(p, size, color) {
 export default class Agents extends View {
   init(_props, cx) {
     if (props()?.sortMenu) return;
+    this.ctx = {};
+    cx.spawn(async (cx) => {
+      // watchFolder needs the folder to exist before any agent has written to it.
+      await exec("mkdir", ["-p", ctxDir()]).catch(() => null);
+      await this.readCtx(null);
+      cx.notify();
+      for (;;) {
+        const paths = await watchFolder(ctxDir()).catch(() => null);
+        if (!paths) return;
+        await this.readCtx(paths.includes(ctxDir()) ? null : paths);
+        cx.notify();
+      }
+    });
     this.folded = new Set();
     // Each agent's last state and when it changed (ms), kept across restarts.
     this.changed = JSON.parse(localStorage.getItem("changed") ?? "{}");
@@ -133,6 +151,23 @@ export default class Agents extends View {
     this.pendingPins = pending;
     if (pending.length) localStorage.setItem("pins", JSON.stringify(pending));
     else localStorage.removeItem("pins");
+  }
+
+  // null: read the whole folder. The status line writes a hidden temp file and
+  // renames it, so only `<terminal>.json` names count.
+  async readCtx(paths) {
+    if (!paths) {
+      const names = await fs.readdir(ctxDir()).catch(() => []);
+      paths = names.map((n) => `${ctxDir()}/${n}`);
+      this.ctx = {};
+    }
+    for (const p of paths) {
+      const m = /\/(t[^/.]+)\.json$/.exec(p);
+      if (!m) continue;
+      const text = await readTextFile(p).catch(() => null);
+      if (text == null) delete this.ctx[m[1]];
+      else try { this.ctx[m[1]] = JSON.parse(text).pct; } catch {}
+    }
   }
 
   since(a) {
@@ -317,6 +352,8 @@ export default class Agents extends View {
       const more = detail.get(a.address);
       // An agent on another machine (`vps/t7`) says which.
       const machine = a.address.includes("/") ? a.address.split("/")[0] : null;
+      // Only this machine's agents: the status line writes here, keyed by local id.
+      const ctx = machine ? null : this.ctx?.[a.address];
       if (collapsed) {
         return h_flex()
           .id(`ag-${a.address}`)
@@ -386,6 +423,7 @@ export default class Agents extends View {
           .when(full && Boolean(more), el => el.child(div().flex_1().min_w(0).truncate().text_color(t.dim).child(`\u00b7 ${more}`))))
         .when(Boolean(machine), el => el.child(div().text_size(10).text_color(t.dim).child(machine)))
         .when(subs.length > 0, el => el.child(fold(a, subs)))
+        .when(ctx != null, el => el.child(div().flex_none().text_size(11).text_color(ctx >= 80 ? t.blocked : ctx >= 50 ? t.working : t.dim).child(`${Math.round(ctx)}%`)))
         .when(this.hovered === a.address, el => el.child(pin))
         .when(this.hovered !== a.address && Boolean(when), el => el.child(div().flex_none().text_size(11).text_color(t.dim).child(duration(now - when))))
         .child(this.status(t, a, byPriority && !isPinned));

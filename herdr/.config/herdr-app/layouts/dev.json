@@ -196,6 +196,13 @@
                       "content": {
                         "mod": "git-graph"
                       }
+                    },
+                    {
+                      "id": "outgoing",
+                      "type": "block",
+                      "content": {
+                        "mod": "better-changes"
+                      }
                     }
                   ],
                   "active": "files"

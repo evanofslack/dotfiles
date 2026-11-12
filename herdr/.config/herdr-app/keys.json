@@ -77,7 +77,8 @@
     "cmd-e": "mod.open:herdr-nvim",
     "cmd-o": "herdr-nvim.pick",
     "cmd-shift-e": "herdr-nvim.reveal",
-    "cmd-shift-g": "mod.open:gitview-sidebar",
+    "cmd-shift-g": "mod.open:better-changes",
+    "cmd-alt-g": "mod.open:gitview-sidebar",
     "cmd-g": "mod.open:gitview-tab",
     "cmd-shift-n": "mod.open:wt-claude"
   },

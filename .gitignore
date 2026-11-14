@@ -3,3 +3,6 @@ tmux/.config/tmux/plugins/
 zsh/.zsh/plugins/
 gh/.config/gh/hosts.yml
 *.log
+# herdr writes these into every mod folder
+herdr/.config/herdr-app/mods/*/gpui-kit.d.ts
+herdr/.config/herdr-app/mods/*/jsconfig.json

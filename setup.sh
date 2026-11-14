@@ -5,7 +5,7 @@ DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 NVM_VERSION="v0.40.3"
 
-MACOS_PACKAGES=(alacritty atuin bat btop gh git neofetch nvim starship tmux vim zsh)
+MACOS_PACKAGES=(alacritty atuin bat btop gh git herdr neofetch nvim starship tmux vim zsh)
 ARCH_PACKAGES=(alacritty atuin btop gh git neofetch nvim starship tmux vim zsh)
 REMOTE_PACKAGES=(bash git vim)
 
@@ -57,6 +57,9 @@ function backup_conflicts() {
 function stow_packages() {
     # keep ~/.config a real dir so stow doesn't fold it into a package
     mkdir -p "$HOME/.config"
+    # herdr writes app state and mods next to its config, so keep these dirs
+    # real too, or stow folds them and that state lands in the repo
+    mkdir -p "$HOME/.config/herdr" "$HOME/.config/herdr-app/layouts" "$HOME/.config/herdr-app/themes" "$HOME/.config/herdr-app/mods"
     cd "$DOTFILES"
     for pkg in "$@"; do
         backup_conflicts "$pkg"

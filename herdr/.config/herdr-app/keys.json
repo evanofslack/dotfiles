@@ -80,7 +80,8 @@
     "cmd-shift-g": "mod.open:better-changes",
     "cmd-alt-g": "mod.open:gitview-sidebar",
     "cmd-g": "mod.open:gitview-tab",
-    "cmd-shift-n": "mod.open:wt-claude"
+    "cmd-shift-n": "mod.open:wt-claude",
+    "cmd-a": "tabs-plus.last"
   },
   "terminal": {
     "cmd-f": "terminal.search",

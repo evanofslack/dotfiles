@@ -16,7 +16,30 @@ export default class Tabs extends View {
     this.pressed = null;
     this.panels = JSON.parse(localStorage.getItem("panels") ?? "{}");
     // Keys open a panel as its button does: "cmd-g": "tabs-plus.graph" in keys.json.
-    cx.spawn(async (cx) => { for (;;) { this.togglePanel(await nextCommand()); cx.notify(); } });
+    // "tabs-plus.last" jumps back to the tab focused before this one, like tmux last-window.
+    cx.spawn(async (cx) => {
+      for (;;) {
+        const c = await nextCommand();
+        if (c === "last") this.lastTab(); else this.togglePanel(c);
+        cx.notify();
+      }
+    });
+  }
+
+  // Herdr has no focus event, but render runs on every spaces() change, so it records here.
+  trackTab(space) {
+    const id = space?.tabs?.find((c) => c.active)?.id;
+    if (!id || id === this.cur?.id) return;
+    if (this.cur) this.last = this.cur;
+    this.cur = { space: space.id, id };
+  }
+
+  lastTab() {
+    const to = this.last;
+    const space = to && spaces().find((s) => s.id === to.space);
+    if (!space?.tabs?.some((c) => c.id === to.id)) return;
+    if (!space.active) run("space.select", { id: to.space });
+    run("tab.select", { id: to.id });
   }
 
   togglePanel(id) {
@@ -57,6 +80,7 @@ export default class Tabs extends View {
   render() {
     const t = theme();
     const space = spaces().find(p => p.active);
+    this.trackTab(space);
     const shown = space?.tabs ?? [];
     const stop = (_e, cx) => cx.stop_propagation();
     const button = (id, label, action) => div().id(id).size(26).flex_none().flex().items_center().justify_center().rounded(6).text_color(t.dim).hover(s => s.bg(t.hover).text_color(t.foreground))

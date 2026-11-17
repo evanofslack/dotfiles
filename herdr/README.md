@@ -2,7 +2,7 @@
 
 config for the herdr app. install it by hand, there is no brew cask.
 
-tracked: `settings.json`, `keys.json`, the `dev` layout, themes, `~/.config/herdr/config.toml` and my own mods (`spaces-plus`, `picker-plus`, `agents-plus`, `tabs-plus`, clones of the bundled ones, plus `wt-new` and `wt-claude`, which open the bundled `worktree` dialog from `cmd-n` and `cmd-shift-n`, the second with a `claude` tab). `tabs-plus` adds the Outgoing panel button, which opens the `outgoing` block in the `dev` layout.
+tracked: `settings.json`, `keys.json`, the `dev` layout, themes, `~/.config/herdr/config.toml` and my own mods (`spaces-plus`, `picker-plus`, `agents-plus`, `tabs-plus`, clones of the bundled ones, plus `wt-new` and `wt-claude`, which open the bundled `worktree` dialog from `cmd-n` and `cmd-shift-n`, the second with a `claude` tab). `tabs-plus` adds the Outgoing panel button, which opens the `outgoing` block in the `dev` layout. it also has a `tabs-plus.last` command, bound to `cmd-a`, that jumps back to the previous tab like tmux `last-window`.
 
 not tracked:
 - app state (`data/`, `view.json`, `shared.json`, `window.json`, sockets, logs)

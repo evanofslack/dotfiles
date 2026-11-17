@@ -44,7 +44,9 @@ function title(tab, l) {
   const prog = l?.program?.name;
   const live = clean(l?.title);
   const telling = live && live !== prog && !/^[~/]|^[A-Za-z]:\\/.test(live) && !live.includes("@") && live.toLowerCase() !== l?.program?.key;
-  return (tab.name === prog || !tab.named) && telling ? live : tab.name;
+  // A tab named after its program ("claude" from wt-claude) wasn't really named.
+  const generic = [prog, l?.program?.key].some(n => n && n.toLowerCase() === tab.name.toLowerCase());
+  return (generic || !tab.named) && telling ? live : tab.name;
 }
 // A space's color as spaces-plus draws it. Stored names are theme colors, and
 // BRIGHT upgrades ones the bundled mods assigned (keep it the same as spaces-plus).

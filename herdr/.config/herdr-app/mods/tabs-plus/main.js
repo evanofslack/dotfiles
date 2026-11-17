@@ -11,6 +11,16 @@ function find(node, id) {
   return null;
 }
 
+// An unnamed tab takes its agent's terminal title, which Claude Code sets to a short
+// task summary. Same rule as agents-plus: skip titles that are a path, user@host or
+// just the program name, since those don't tell tabs apart.
+function autoName(p) {
+  const live = (p?.title ?? "").replace(/^[^\p{L}\p{N}]+/u, "").trim();
+  const prog = p?.program;
+  if (!live || live === prog?.name || live.toLowerCase() === prog?.key || /^[~/]|^[A-Za-z]:\\/.test(live) || live.includes("@")) return null;
+  return live.length > 20 ? live.slice(0, 19) + "…" : live;
+}
+
 export default class Tabs extends View {
   init(_props, cx) {
     this.pressed = null;
@@ -86,8 +96,11 @@ export default class Tabs extends View {
     const button = (id, label, action) => div().id(id).size(26).flex_none().flex().items_center().justify_center().rounded(6).text_color(t.dim).hover(s => s.bg(t.hover).text_color(t.foreground))
       .on_mouse_down("left", stop).on_click(action).child(label);
     const item = (c, i) => {
-      const program = panes().find(p => p.tab === c.id && p.program?.agent)?.program ?? panes().find(p => p.tab === c.id)?.program;
-      const name = /^tb\d+$/.test(c.name) ? program?.name ?? "Terminal" : c.name;
+      const lead = panes().find(p => p.tab === c.id && p.program?.agent) ?? panes().find(p => p.tab === c.id);
+      const program = lead?.program;
+      // wt-claude names its tab "claude", which is the program, not a name someone chose.
+      const generic = [program?.name, program?.key].some(n => n && n.toLowerCase() === c.name.toLowerCase());
+      const name = /^tb\d+$/.test(c.name) || !c.named || generic ? autoName(lead) ?? program?.name ?? "Terminal" : c.name;
       return h_flex().id(`tab-${c.id}`).h(29).px(10).gap(7).rounded(7).items_center().flex_none().text_size(12.8)
         .border(1).border_color(c.active ? t.border : t.chrome).bg(c.active ? t.raised : t.chrome).text_color(c.active ? t.foreground : t.muted)
         .hover(s => s.bg(t.hover))
